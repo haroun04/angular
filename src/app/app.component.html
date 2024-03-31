@@ -1,13 +1,28 @@
-<header class="mi-header">
-  <div class="logo-nombre">
-    <img src="assets/img/logo.png" alt="EatEasy">
-    <h1>{{title}}</h1>
-  </div>
-  <div class="buscador">
-    <input aria-label="search" type="search" placeholder="Buscar restaurante" class="form-control">
-    <button type="submit">Buscar</button> 
+<header class="p-3 fixed-top">
+  <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <img src="assets/img/logo.png" class="logo me-2" alt="Logo de EatEasy">
+              EatEasy
+          </a>
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="#" class="nav-link px-2 text-secondary">Inicio</a></li>
+              <li><a href="#" class="nav-link px-2">Características</a></li>
+              <li><a href="#" class="nav-link px-2">Precios</a></li>
+          </ul>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Buscar">
+          </form>
+          <div class="text-end">
+              <button type="button" class="btn btn-outline-light btn-ingresar">Ingresar</button>
+              <button type="button" class="btn btn-warning btn-registrarse">Registrarse</button>
+          </div>
+      </div>
   </div>
 </header>
+
+
+
 <app-restaurant></app-restaurant>
   <footer class="footer">
       <div class="grupo-1">

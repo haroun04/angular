@@ -1,134 +1,17 @@
-.mi-header {
-    background-color: #22B14C;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo-nombre {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo-nombre img {
-    margin-right: 10px;
-    width: 60px;
-    height: auto;
-  }
-  
-  .buscador {
-    position: relative; 
-  }
-  
-  .buscador input {
-    border: none;
-    color: black;
-    font-size: 17px;
-    padding: 8px;
-    border-radius: 20px;
-  }
-  
-  .buscador input:focus {
-    outline: none;
-    border-color: #fff;
-  }
-  
-  .buscador button {
-    position: absolute;
-    right: 0; 
-    top: 50%; 
-    transform: translateY(-50%);
-    background-color: #fff;
-    color: #22B14C;
-    border: none;
-    padding: 6px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 20px;
-  }
-  
-  .buscador button:hover {
-    background-color: #f5f5f5; 
-    
-  }
-.main-content {
-    text-align: center;
-    padding: 50px;
+header {
+  background-color: #fd3343; /* ROSA */
+  color: #f9ffff; /* BLANCO */
 }
 
-.main-content h2 {
-    color: #333;
-    font-size: 36px;
+.nav-link {
+  color: #f9ffff !important; /* BLANCO */
 }
 
-.main-content p {
-    color: #666;
-    font-size: 18px;
-    margin-bottom: 30px;
+.form-control-dark {
+  background-color: #f9ffff; /* BLANCO */
+  color: #000000; /* NEGRO */
 }
 
-.btn {
-    background-color: #22B14C;
-    color: white;
-    margin: 10px;
-    padding: 18px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    background-color: #1e9959;
-}
-
-.footer {
-  width: 100%;
-  background-color: black;
-}
-.footer .grupo-1{
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap:50px;
-    padding: 5px ;
-    justify-items: end;
-}
-.footer .grupo-1 .box figure{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.footer .grupo-1 .box h2{
-    color: #fff;
-    margin-bottom: 25px;
-    font-size: 20px;
-}
-.footer .grupo-1 .box p{
-    color: #efefef;
-    margin-bottom: 10px;
-    font-size: 15px;
-}
-.footer .grupo-1 .red-social {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer .grupo-1 .red-social img {
-  width: 40px; 
-  height: auto; 
-  margin: 0 5px; 
-}
-
-.footer .grupo-2{
-    background-color: #22B14C;
-    padding: 5px 10px;
-    text-align: center;
-    color: #fff;
-    margin: 0;
+.logo {
+  height: 30px; /* Altura deseada del logotipo */
 }
