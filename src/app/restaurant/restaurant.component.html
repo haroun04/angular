@@ -1,0 +1,19 @@
+<div class="restaurant-list" *ngIf="restaurants && restaurants.length > 0">
+  <ul>
+    <li *ngFor="let restaurant of restaurants">
+      <div class="restaurant-box">
+        <div class="restaurant-info">
+          <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="restaurant-image">
+          <div class="details">
+            <h2>{{ restaurant.name }}</h2>
+            <p><strong>Ubicación:</strong> {{ restaurant.location }}</p>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!restaurants || restaurants.length === 0">
+  <p>No hay restaurantes disponibles.</p>
+</div>

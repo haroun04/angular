@@ -1,0 +1,48 @@
+.restaurant-list {
+  margin: 20px auto;
+  max-width: 800px; /* Aumenta el ancho máximo */
+}
+
+.restaurant-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.restaurant-image {
+  max-width: 250px; /* Aumenta el ancho máximo de la imagen */
+  max-height: 150px;
+  margin-right: 20px; 
+}
+
+.restaurant-list li {
+  margin-bottom: 40px; /* Aumenta el espacio entre las cajas */
+}
+
+.restaurant-box {
+  background-color: #f9f9f9;
+  border-radius: 15px; /* Aumenta el radio de borde para cajas más redondeadas */
+  padding: 30px; /* Aumenta el espacio interior */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Aumenta la sombra */
+}
+
+.restaurant-info {
+  display: flex; 
+  align-items: center; 
+}
+
+.details {
+  flex-grow: 1; 
+}
+
+.restaurant-box h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 24px; /* Aumenta el tamaño del título */
+}
+
+.restaurant-box p {
+  margin: 10px 0 0; /* Aumenta el espacio entre los elementos */
+  color: #666;
+  font-size: 18px; /* Aumenta el tamaño del texto */
+  text-align: right; 
+}
