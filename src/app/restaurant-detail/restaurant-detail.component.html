@@ -1,4 +1,10 @@
-<div *ngIf="restaurant">
+<div class="container text-center custom-margin" *ngIf="restaurant">
   <h1>{{ restaurant.name }}</h1>
   <p>Ubicación: {{ restaurant.location }}</p>
+  <p>Estilo de comida: {{ restaurant.foodStyle }}</p>
+  <p>Horario: {{ restaurant.timeTable }}</p>
+  <p>Capacidad: {{ restaurant.capacity }}</p>
+  <p>Teléfono: {{ restaurant.phoneNumber }}</p>
+  <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="img-fluid rounded-start restaurant-image">
 </div>
+
