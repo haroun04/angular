@@ -13,6 +13,7 @@
                   <div class="card-body">
                     <h2 class="card-title">{{ restaurant.name }}</h2>
                     <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>
+                    <a [routerLink]="['/restaurants', restaurant.id]" class="btn btn-primary" (click)="logRestaurantId(restaurant)">Ver detalles</a>
                   </div>
                 </div>
               </div>

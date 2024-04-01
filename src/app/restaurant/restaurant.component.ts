@@ -20,4 +20,7 @@ export class RestaurantComponent implements OnInit {
     this.restaurantService.getAllRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
   }
+  logRestaurantId(restaurant: Restaurant): void {
+    console.log('Restaurant ID:', restaurant.id);
+  }
 }

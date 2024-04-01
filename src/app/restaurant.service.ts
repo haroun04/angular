@@ -33,5 +33,6 @@ export class RestaurantService {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<void>(url);
   }
+  
 
 }
