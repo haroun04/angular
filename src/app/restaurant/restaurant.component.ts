@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../restaurant'; // Asegúrate de tener un modelo para Restaurant
 import { RestaurantService } from '../restaurant.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -10,17 +11,16 @@ import { RestaurantService } from '../restaurant.service';
 export class RestaurantComponent implements OnInit {
   restaurants: Restaurant[]=[];
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllRestaurants();
   }
 
   getAllRestaurants(): void {
-    this.restaurantService.getAllRestaurants()
-      .subscribe(restaurants => this.restaurants = restaurants);
+    this.restaurantService.getAllRestaurants().subscribe(restaurants => this.restaurants = restaurants);
   }
-  logRestaurantId(restaurant: Restaurant): void {
-    console.log('Restaurant ID:', restaurant.id);
+  verDetalles(id: number) {
+    this.router.navigate(['restaurant-detail',id]);
   }
 }

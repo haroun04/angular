@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container text-center mt-7 mt-md-8 mt-lg-8">
   <div class="row">
     <div class="col">
       <ng-container *ngIf="restaurants && restaurants.length > 0; else noRestaurants">
@@ -13,7 +13,7 @@
                   <div class="card-body">
                     <h2 class="card-title">{{ restaurant.name }}</h2>
                     <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>
-                    <a [routerLink]="['/restaurants', restaurant.id]" class="btn btn-primary" (click)="logRestaurantId(restaurant)">Ver detalles</a>
+                    <button class="btn btn-primary" (click)="verDetalles(restaurant.id!)">Ver detalles</button>
                   </div>
                 </div>
               </div>
