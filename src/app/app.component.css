@@ -16,7 +16,10 @@ header {
 .logo {
   height: 40px; /* Altura deseada del logotipo */
 }
-footer {
-  position: absolute; 
-  flex-shrink: 0
+
+.footer {
+  position:initial;
+  width: 100%;
+  background-color: black;    /* he puesto este color por que quieria ver el color de abajo si se quita se quitara me da igual el color*/
+  color: white;
 }
