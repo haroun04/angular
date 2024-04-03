@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'restaurants', component: RestaurantComponent },
   { path: 'restaurant-detail/:id', component: RestaurantDetailComponent },
   { path: 'search-results', component: SearchResultsComponent },
+  { path: 'search-results/:id', component: RestaurantDetailComponent },
   { path: '', redirectTo: '/restaurants', pathMatch: 'full' }, 
 ];
 

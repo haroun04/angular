@@ -1,10 +1,10 @@
 <div class="container text-center custom-margin">
     <div class="row ">
-      <div class="col ">
+      <div class="col">
         <ng-container *ngIf="restaurants && restaurants.length > 0; else noRestaurants">
           <ul class="list-unstyled">
-            <li *ngFor="let restaurant of restaurants">
-              <div class="card mb-3">
+            <li (click)="verDetalles2(restaurant.id!)" *ngFor="let restaurant of restaurants">
+              <div class="card mb-3 mt-5">
                 <div class="row g-0 align-items-center">
                   <div class="col-md-4">
                     <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="img-fluid rounded-start restaurant-image">

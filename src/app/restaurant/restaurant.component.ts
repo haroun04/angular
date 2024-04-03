@@ -23,4 +23,5 @@ export class RestaurantComponent implements OnInit {
   verDetalles(id: number) {
     this.router.navigate(['restaurant-detail',id]);
   }
+  
 }

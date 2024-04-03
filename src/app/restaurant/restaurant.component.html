@@ -3,8 +3,8 @@
     <div class="col ">
       <ng-container *ngIf="restaurants && restaurants.length > 0; else noRestaurants">
         <ul class="list-unstyled">
-          <li *ngFor="let restaurant of restaurants">
-            <div class="card mb-3">
+          <li (click)="verDetalles(restaurant.id!)" *ngFor="let restaurant of restaurants">
+            <div class="card mb-3 mt-5">
               <div class="row g-0 align-items-center">
                 <div class="col-md-4">
                   <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="img-fluid rounded-start restaurant-image">
@@ -13,7 +13,6 @@
                   <div class="card-body">
                     <h2 class="card-title">{{ restaurant.name }}</h2>
                     <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>
-                    <button class="btn btn-primary" (click)="verDetalles(restaurant.id!)">Ver detalles</button>
                   </div>
                 </div>
               </div>
