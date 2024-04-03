@@ -1,0 +1,29 @@
+<div class="container text-center custom-margin">
+    <div class="row ">
+      <div class="col ">
+        <ng-container *ngIf="restaurants && restaurants.length > 0; else noRestaurants">
+          <ul class="list-unstyled">
+            <li *ngFor="let restaurant of restaurants">
+              <div class="card mb-3">
+                <div class="row g-0 align-items-center">
+                  <div class="col-md-4">
+                    <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="img-fluid rounded-start restaurant-image">
+                  </div>
+                  <div class="col-md-8">    
+                    <div class="card-body">
+                      <h2 class="card-title">{{ restaurant.name }}</h2>
+                      <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <ng-template #noRestaurants>
+          <p class="no-restaurants-message">No hay restaurantes disponibles.</p>
+        </ng-template>
+      </div>
+    </div>
+</div>
+  

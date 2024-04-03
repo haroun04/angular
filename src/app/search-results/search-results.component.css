@@ -1,0 +1,10 @@
+.container{
+  margin-top: 80px;
+}
+.no-restaurants-message {
+  color: red; 
+  font-size: 18px; 
+  padding: 12%;
+  text-align: center; 
+}
+

@@ -34,5 +34,8 @@ export class RestaurantService {
     return this.http.delete<void>(url);
   }
   
+  searchRestaurantsByName(name: string): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${this.baseUrl}/search?name=${name}`);
+  }
 
 }

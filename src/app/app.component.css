@@ -16,3 +16,7 @@ header {
 .logo {
   height: 40px; /* Altura deseada del logotipo */
 }
+footer {
+  position: absolute; 
+  flex-shrink: 0
+}
