@@ -1,23 +1,27 @@
-<header class="p-3 fixed-top">
-  <div class="container">
+<header class="p-3 text-white mb-5">
+    <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-              <img src="assets/img/logo.png" class="logo me-2" alt="Logo de EatEasy">
-              EatEasy
-          </a>
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2">Restaurantes Cerca</a></li>
-          </ul>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" (ngSubmit)="searchRestaurant()">
-            <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm">
-          </form>          
-          <div class="text-end">
-              <button type="button" class="btn btn-outline-light btn-ingresar">Ingresar</button>
-              <button type="button" class="btn btn-outline-light btn-registrarse">Registrarse</button>
-          </div>
+        <ul class="align-items-center nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="assets/img/logo.png" class="logo me-2" alt="Logo de EatEasy">
+            </a>
+          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" (ngSubmit)="searchRestaurant()">
+          <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm" aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-light me-2">Iniciar Sesión</button>
+          <button type="button" class="btn btn-light">Registrarse</button>
+        </div>
       </div>
-  </div>
-</header>
+    </div>
+  </header>
 
 <router-outlet></router-outlet>
 

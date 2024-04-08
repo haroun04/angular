@@ -1,6 +1,3 @@
-/*.container{
-  margin-top: 400px;
-}*/
 .no-restaurants-message {
   color: red; 
   font-size: 18px; 
@@ -9,20 +6,17 @@
 }
 
 .container{
-  padding-top: 15%;
   padding-bottom: 10%;
 }
 
 @media (max-width: 992px) {
   .container {
-    padding-top: 40%;
     padding-bottom: 10%;
   }
 }
 
 @media (max-width: 700px) {
   .container {
-    padding-top: 60%;
     padding-bottom: 20%;
   }
 }
