@@ -1,8 +1,8 @@
 <div class="container text-center custom-margin">
-  <div class="row ">
-    <div class="col ">
+  <div class="row">
+    <div class="col">
       <ng-container *ngIf="restaurants && restaurants.length > 0; else noRestaurants">
-        <ul class="list-unstyled">          
+        <ul class="list-unstyled">
           <li (click)="verDetalles(restaurant.id!)" *ngFor="let restaurant of restaurants">
             <div class="card mb-3 mt-5">
               <div class="row g-0 align-items-center">
@@ -12,13 +12,16 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h2 class="card-title">{{ restaurant.name }}</h2>
-                    <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>                    
+                    <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>
+                    <div class="star-rating">
+                      <p class="card-text">{{ restaurant.starRating }}</p>
+                      <img src="assets/img/estrella.png"/>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </li>
-          
         </ul>
       </ng-container>
       <ng-template #noRestaurants>
