@@ -13,3 +13,13 @@
       padding-bottom: 20%;
     }
   }
+  .star-rating {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .star-rating img {
+    width: 20px;
+    margin-right: 5px; 
+  }

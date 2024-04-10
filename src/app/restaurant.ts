@@ -1,13 +1,14 @@
-import { Review } from './review';
+    import { Review } from './review';
 
-export class Restaurant {
-    id ?: number;
-    name ?: string;
-    location ?: string;
-    foodStyle ?: string;
-    timeTable ?: string;
-    capacity ?: number;
-    phoneNumber ?: string;
-    url ?: string;
-    reviews ?: Review[];
-}
+    export class Restaurant {
+        id ?: number;
+        name ?: string;
+        location ?: string;
+        foodStyle ?: string;
+        timeTable ?: string;
+        capacity ?: number;
+        phoneNumber ?: string;
+        starRating ?: number;
+        url ?: string;
+        reviews ?: Review[];
+    }
