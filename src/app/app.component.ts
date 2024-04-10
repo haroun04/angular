@@ -8,13 +8,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'EatEasy';
-  searchTerm: string = '';
 
   constructor(private router: Router) {}
 
-  searchRestaurant(): void {
-    if (this.searchTerm.trim() !== '') {
-      this.router.navigate(['/search-results'], { queryParams: { searchTerm: this.searchTerm } });
-    }
+  // Método para verificar si la ruta actual es la de inicio de sesión
+  isLoginPage(): boolean {
+    return this.router.url === '/login';
+  }
+
+  // Método para verificar si la ruta actual es la de registro
+  isRegisterPage(): boolean {
+    return this.router.url === '/register';
   }
 }

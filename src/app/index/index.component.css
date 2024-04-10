@@ -1,0 +1,34 @@
+.container {
+    display: flex; /* Hace que el contenedor sea un flexbox */
+    justify-content: center; /* Centra horizontalmente los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    height: 100vh; /* Establece la altura del contenedor al 100% del viewport */
+  }
+  
+  /* Estilo para el carrusel */
+  .carousel {
+    width: 90%; /* Ancho del carrusel */
+  }
+  
+  /* Estilo para las imágenes dentro de los items del carrusel */
+  .carousel-item img {
+    object-fit: cover; /* Escala la imagen para llenar el contenedor */
+    width: 100%; /* Ancho del 100% para que la imagen llene el contenedor */
+    height: 500px; /* Altura fija para las imágenes */
+  }
+  
+  /* Estilo para los controles de navegación del carrusel */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%; /* Ancho de los controles de navegación */
+  }
+  
+  /* Estilo para los indicadores del carrusel */
+  .carousel-indicators {
+    bottom: 10px; /* Posición de los indicadores */
+  }
+  
+  /* Estilo para el indicador activo del carrusel */
+  .carousel-indicators .active {
+    background-color: #007bff; /* Color de fondo del indicador activo */
+  }
