@@ -8,7 +8,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #F84E77;
+  background: teal;
   color: #ffffff;
   border-radius: 50%;
   margin-right: 8px;
@@ -40,7 +40,7 @@ body {
   bottom: 0;
   height: 1px;
   transition: ease all 0.35s;
-  background: #F84E77;
+  background: teal;
 }
 
 .footer .footer-links li a:hover:after {
