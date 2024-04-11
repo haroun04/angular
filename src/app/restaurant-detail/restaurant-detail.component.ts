@@ -36,8 +36,13 @@ export class RestaurantDetailComponent implements OnInit {
       });
   }
 
-  getReviewsByRestaurantId(restaurantId: number): void {
-    this.reviewService.getReviewsByRestaurantId(restaurantId)
-      .subscribe(reviews => this.reviews = reviews);
-  }
+ getReviewsByRestaurantId(restaurantId: number): void {
+  this.reviewService.getReviewsByRestaurantId(restaurantId)
+    .subscribe(reviews => {
+      this.reviews = reviews;
+      this.reviews.forEach(review => {
+        review.restaurantId = restaurantId;
+      });
+    });
+}
 }
