@@ -12,7 +12,7 @@ export class ReviewService {
 
   constructor(private http: HttpClient) { }
 
-  getAllReviews(): Observable<Review[]>{
+  getAllReviews(): Observable<Review[]> {
     return this.http.get<Review[]>(this.baseUrl);
   }
 
@@ -20,4 +20,7 @@ export class ReviewService {
     return this.http.get<Review[]>(`${this.baseUrl}/restaurant/${restaurantId}`);
   }
 
+  createReview(restaurantId: number, review: Review): Observable<Review> {
+    return this.http.post<Review>(`${this.baseUrl}/restaurant/${restaurantId}`, review);
+  }
 }

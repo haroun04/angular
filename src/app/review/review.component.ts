@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Review } from '../review';
 import { ReviewService } from '../review.service';
+
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  styleUrl: './review.component.css'
+  styleUrls: ['./review.component.css']
 })
-export class ReviewComponent {
-  reviews: Review[] = []; 
+export class ReviewComponent implements OnInit {
+  reviews: Review[] = [];
 
-  constructor(private reviewService: ReviewService, private router: Router) { }
+  constructor(private reviewService: ReviewService) { }
 
   ngOnInit(): void {
     this.getAllReviews();
   }
-
   getAllReviews(): void {
-    this.reviewService.getAllReviews().subscribe(reviews => this.reviews = reviews);
+    this.reviewService.getAllReviews().subscribe(reviews => {
+      this.reviews = reviews;
+      this.reviews.forEach(review => {
+        review.restaurantId = review.restaurantId;
+        review.userId = review.userId;
+      });
+    });
   }
+  
+
 }

@@ -4,4 +4,5 @@ export class Review {
     assessment ?: number;
     createdAt ?: Date;
     restaurantId ?: number;
+    userId ?:number;
 }
