@@ -23,4 +23,9 @@ export class ReviewService {
   createReview(restaurantId: number, review: Review): Observable<Review> {
     return this.http.post<Review>(`${this.baseUrl}/restaurant/${restaurantId}`, review);
   }
+
+  getReviewUserName(reviewId: number): Observable<string> {
+    return this.http.get(`${this.baseUrl}/${reviewId}/user`, { responseType: 'text' });
+  }
+  
 }

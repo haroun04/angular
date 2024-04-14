@@ -5,4 +5,5 @@ export class Review {
     createdAt ?: Date;
     restaurantId ?: number;
     userId ?:number;
+    userName ?: string;
 }

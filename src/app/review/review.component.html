@@ -4,19 +4,21 @@
     <thead>
       <tr>
         <th>Comment</th>
-        <th>Assessment</th>
+        <th>Id</th>
         <th>Created At</th>
         <th>Restaurant ID</th>
         <th>userId</th>
+        <th>Name</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let review of reviews">
         <td>{{ review.comment }}</td>
-        <td>{{ review.assessment }}</td>
+        <td>{{ review.id }}</td>
         <td>{{ review.createdAt | date }}</td>
         <td>{{ review.restaurantId }}</td>
         <td>{{ review.userId }}</td>
+        <td>{{ review.userName}}</td>
       </tr>
     </tbody>
   </table>

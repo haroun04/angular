@@ -38,6 +38,25 @@ export class RestaurantDetailComponent implements OnInit {
 
   getReviewsByRestaurantId(restaurantId: number): void {
     this.reviewService.getReviewsByRestaurantId(restaurantId)
-      .subscribe(reviews => this.reviews = reviews);
+      .subscribe(reviews => {
+        this.reviews = reviews;
+        this.reviews.forEach(review => {
+          this.getReviewUserName(review.id!);
+        });
+      });
+  }
+
+  getReviewUserName(reviewId: number): void {
+    this.reviewService.getReviewUserName(reviewId).subscribe({
+      next: userName => {
+        const review = this.reviews.find(r => r.id === reviewId);
+        if (review) {
+          review.userName = userName;
+        }
+      },
+      error: error => {
+        console.error('Error al obtener el nombre de usuario:', error);
+      }
+    });
   }
 }

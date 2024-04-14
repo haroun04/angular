@@ -23,5 +23,14 @@ export class RestaurantComponent implements OnInit {
   verDetalles(id: number) {
     this.router.navigate(['restaurant-detail',id]);
   }
+
+  getStars(starRating: number): number[] {
+    const stars = [];
+    for (let i = 0; i < starRating; i++) {
+      stars.push(i);
+    }
+    return stars;
+  }
+  
   
 }

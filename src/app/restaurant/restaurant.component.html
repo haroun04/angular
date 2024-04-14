@@ -13,10 +13,12 @@
                   <div class="card-body">
                     <h2 class="card-title">{{ restaurant.name }}</h2>
                     <p class="card-text"><strong>Ubicación:</strong> {{ restaurant.location }}</p>
-                    <div class="star-rating">
-                      <p class="card-text">{{ restaurant.starRating }}</p>
-                      <img src="assets/img/estrella.png"/>
+                    <div class="star-rating" *ngIf="restaurant.starRating !== undefined">
+                      <p class="card-text" *ngFor="let star of getStars(restaurant.starRating)">
+                        <img src="assets/img/estrella.png"/>
+                      </p>
                     </div>
+                    
                   </div>
                 </div>
               </div>
