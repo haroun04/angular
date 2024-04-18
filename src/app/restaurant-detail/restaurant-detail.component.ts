@@ -42,9 +42,11 @@ export class RestaurantDetailComponent implements OnInit {
         this.reviews = reviews;
         this.reviews.forEach(review => {
           this.getReviewUserName(review.id!);
+          this.getReviewUserProfilePicture(review.id!);
         });
       });
   }
+  
 
   getReviewUserName(reviewId: number): void {
     this.reviewService.getReviewUserName(reviewId).subscribe({
@@ -58,5 +60,23 @@ export class RestaurantDetailComponent implements OnInit {
         console.error('Error al obtener el nombre de usuario:', error);
       }
     });
+  }
+
+  getReviewUserProfilePicture(reviewId: number): void{
+    this.reviewService.getReviewUserProfilePicture(reviewId).subscribe({
+      next: userProfilePicture => {
+        const review = this.reviews.find(r => r.id === reviewId);
+        if (review) {
+          review.userProfilePicture = userProfilePicture;
+        }
+      },
+      error: error => {
+        console.error('Error al obtener la foto de perfil:', error);
+      }
+    });
+  }
+
+  generarArreglo(assessment: number): any[] {
+    return Array(assessment);
   }
 }

@@ -6,4 +6,5 @@ export class Review {
     restaurantId ?: number;
     userId ?:number;
     userName ?: string;
+    userProfilePicture ?: string;
 }

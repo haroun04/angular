@@ -24,8 +24,14 @@ export class ReviewService {
     return this.http.post<Review>(`${this.baseUrl}/restaurant/${restaurantId}`, review);
   }
 
+  //Coger nombre del usuario
   getReviewUserName(reviewId: number): Observable<string> {
     return this.http.get(`${this.baseUrl}/${reviewId}/user`, { responseType: 'text' });
+  }
+
+  //Coger foto de perfil
+  getReviewUserProfilePicture(reviewId: number): Observable<string> {
+    return this.http.get(`${this.baseUrl}/${reviewId}/userProfilePicture`, { responseType: 'text' });
   }
   
 }

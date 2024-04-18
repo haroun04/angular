@@ -22,6 +22,7 @@ export class ReviewComponent implements OnInit {
         review.restaurantId = review.restaurantId;
         review.userId = review.userId;
         this.getReviewUserName(review.id ?? 0); // Si review.id es undefined, se usa 0
+        this.getReviewUserProfilePicture(review.id ?? 0);
       });
     });
   }
@@ -40,6 +41,21 @@ export class ReviewComponent implements OnInit {
       }
     });
   }
+
+  getReviewUserProfilePicture(reviewId: number): void{
+    this.reviewService.getReviewUserProfilePicture(reviewId).subscribe({
+      next: userProfilePicture => {
+        const review = this.reviews.find(r => r.id === reviewId);
+        if (review) {
+          review.userProfilePicture = userProfilePicture;
+        }
+      },
+      error: error => {
+        console.error('Error al obtener la foto de perfil:', error);
+      }
+    });
+  }
+
   
 
 }

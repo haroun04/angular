@@ -13,7 +13,64 @@
     </div>
   </div>
 
+
   <div *ngIf="reviews.length > 0">
+    <h2 class="mt-5">List of Reviews</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let review of reviews">
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <section>
+              <div class="row text-center">
+                <div class="col-md-12 mb-0">
+                  <div class="d-flex justify-content-center mb-4">
+                    <img [src]="review.userProfilePicture" alt="{{ review.userProfilePicture}}" class="img-fluid rounded-circle " style="width: 50px; height: 50px;">
+                  </div>
+                  <h5 class="mb-3">{{review.userName}}</h5>
+                  <h6 class="text-primary mb-3">{{review.createdAt}}</h6>
+                  <p class="px-xl-3">
+                    <i class="fas fa-quote-left pe-2"></i>{{review.comment}}
+                  </p>
+                  <ul class="list-unstyled d-flex justify-content-center mb-0">
+                    <div *ngIf="review.assessment !== undefined">
+                      <ul class="list-unstyled d-flex justify-content-center mb-0">
+                        <li *ngFor="let _ of generarArreglo(review.assessment)">
+                          <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="reviews.length === 0">
+    <p class="mt-5">No existen reseñas.</p>
+  </div>
+</div>
+
+
+
+ <!--ZONA DE REVIEWS
+  
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-xl-8 text-center">
+        <h3 class="mb-4">Testimonials</h3>
+        <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+          numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+          quisquam eum porro a pariatur veniam.
+        </p>
+      </div>
+    </div>
+
+
+      <div *ngIf="reviews.length > 0">
     <h2 class="mt-5">List of Reviews</h2>
     <div class="row">
       <div class="col">
@@ -25,6 +82,8 @@
                 <p><strong>Assessment:</strong> {{ review.assessment }}</p>
                 <p><strong>Created At:</strong> {{ review.createdAt }}</p>
                 <p><strong>User:</strong> {{ review.userName }}</p>
+                <p><strong>ProfilePicture:</strong></p>
+                <img [src]="review.userProfilePicture" alt="{{ review.userProfilePicture}}" class="img-fluid rounded-circle restaurant-image" style="width: 50px; height: 50px;">
               </div>
             </div>
           </li>
@@ -36,3 +95,5 @@
     <p class="mt-5">No reviews available.</p>
   </div>
 </div>
+
+  -->
