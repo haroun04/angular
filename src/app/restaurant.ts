@@ -11,4 +11,10 @@
         starRating ?: number;
         url ?: string;
         reviews ?: Review[];
+        images ?: Image[];
+    }
+
+    export class Image {
+        id ?: number;
+        url ?: string;
     }
