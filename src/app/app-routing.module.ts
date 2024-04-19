@@ -18,9 +18,8 @@ const routes: Routes = [
   { path: 'reviews', component: ReviewComponent }, 
   { path: 'login', component: LoginComponent }, 
   { path: 'register', component: RegisterComponent }, 
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },  
   { path: 'about', component: AboutComponent },
-  
 ];
 
 

@@ -21,12 +21,11 @@ export class LoginComponent {
     this.http.post<any>('http://localhost:8080/api/users/login', userData).subscribe(
       response => {
         console.log('Login exitoso:', response);
-        // Redirige al usuario a la página principal
         this.router.navigate(['/restaurants']); 
       },
       error => {
         console.error('Error en el login:', error);
-        this.loginError = true; // Activa el mensaje de error en el template
+        this.loginError = true;
       }
     );
   }
