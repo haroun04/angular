@@ -3,7 +3,10 @@
     <div class="col-md-6">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div *ngFor="let image of restaurant.images; let i = index" class="carousel-item" [class.active]="i === 0">
+          <div class="carousel-item active">
+            <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="d-block w-100">
+          </div>
+          <div *ngFor="let image of restaurant.images; let i = index" class="carousel-item">
             <img [src]="image.url" alt="{{ restaurant.name }}" class="d-block w-100">
           </div>
         </div>
@@ -17,6 +20,7 @@
         </button>
       </div>
     </div>
+    
     <div class="col-md-6 text-left">
       <h1>{{ restaurant.name }}</h1>
       <p><strong>Ubicación:</strong> {{ restaurant.location }}</p>
