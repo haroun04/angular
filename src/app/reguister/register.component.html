@@ -1,9 +1,8 @@
 <div class="container justify-content-center mt-5 form-container">
   <p class="title">Crear cuenta</p>
-  <form class="form">
-      <input type="text" class="input" placeholder="Nombre">
-      <input type="email" class="input" placeholder="Correo electrónico">
-      <input type="password" class="input" placeholder="Contraseña">
+  <form class="form" (ngSubmit)="signUp()">
+      <input type="text" class="input" placeholder="Nombre" [(ngModel)]="register.name" required>
+      <input type="password" class="input" placeholder="Contraseña"  [(ngModel)]="register.password" required>
       <button class="form-btn">Crear cuenta</button>
   </form>
   <p class="sign-up-label">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +11,16 @@ export class LoginComponent {
 
   name: string = '';
   password: string = '';
-  loginError: boolean = false; // Variable para controlar el mensaje de error
+  loginError: boolean = false; 
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   loginUser(): void {
-    const userData = { name: this.name, password: this.password };
-
-    this.http.post<any>('http://localhost:8080/api/users/login', userData).subscribe(
+    this.loginService.login(this.name, this.password).subscribe(
       response => {
         console.log('Login exitoso:', response);
-        this.router.navigate(['/restaurants']); 
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/index']);
       },
       error => {
         console.error('Error en el login:', error);
