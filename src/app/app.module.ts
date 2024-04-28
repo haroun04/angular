@@ -15,7 +15,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { IndexComponent } from './index/index.component';
-import { Header2Component } from './header2/header2.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { Header2Component } from './header2/header2.component';
     FooterComponent,
     AboutComponent,
     IndexComponent,
-    Header2Component,
   ],
   imports: [
     BrowserModule,
