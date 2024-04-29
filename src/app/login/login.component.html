@@ -1,9 +1,9 @@
 <div class="container justify-content-center mt-5 form-container">
   <p class="title">Bienvenido de vuelta</p>
-  <form class="form">
-    <input type="email" class="input" placeholder="Correo electrónico">
-    <input type="password" class="input" placeholder="Contraseña">
-    <button class="form-btn">Iniciar sesión</button>
+  <form class="form" (ngSubmit)="loginUser()">
+    <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="name">
+    <input type="password" class="input" placeholder="Contraseña" name="password" [(ngModel)]="password">
+    <button type="submit" class="form-btn">Iniciar sesión</button>
   </form>
   <p class="sign-up-label">
     ¿No tienes una cuenta?<span class="sign-up-link" [routerLink]="['/register']">Regístrate</span>
