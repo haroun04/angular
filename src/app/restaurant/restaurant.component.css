@@ -23,3 +23,12 @@
     width: 20px;
     margin-right: 5px; 
   }
+
+  .custom-pagination .page-item {
+    margin: 0 5px;
+  }
+
+  .custom{
+    background-color: teal;
+    color: white;
+  }
