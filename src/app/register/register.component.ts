@@ -9,7 +9,7 @@ import { Reguister } from '../reguister';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  register: Reguister = { name: '', password: '' };
+  register: Reguister = { name: '', email:'' ,password: ''};
 
   constructor(private registerService: ReguisterService, private router: Router) { }
 
@@ -18,6 +18,7 @@ export class RegisterComponent {
       .subscribe(
         response => {
           console.log('Registro exitoso:', response);
+          console.log('Datos del usuario:', this.register);
           this.router.navigate(['/index']);
         },
         error => {
