@@ -24,23 +24,27 @@
             </div>
           </li>
         </ul>
-        <nav>
-          <ul class="pagination justify-content-center">
-            <li class="page-item" [class.disabled]="currentPage === 1">
-              <a class="page-link" href="#" aria-label="Previous" (click)="prevPage($event)">
+        <nav aria-label="Page navigation ">
+          <ul class="pagination justify-content-center custom-pagination ">
+            <li class="page-item " [class.disabled]="currentPage === 1">
+              <a class="page-link rounded-circle border-0" href="#" aria-label="Previous" (click)="prevPage($event)">
                 <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
               </a>
             </li>
             <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
-              <a class="page-link" href="#" (click)="goToPage(page, $event)">{{ page }}</a>
+              <a class="page-link rounded-circle border-0 custom" href="#" (click)="goToPage(page, $event)">{{ page }}</a>
             </li>
             <li class="page-item" [class.disabled]="currentPage === totalPages">
-              <a class="page-link" href="#" aria-label="Next" (click)="nextPage($event)">
+              <a class="page-link rounded-circle border-0" href="#" aria-label="Next" (click)="nextPage($event)">
                 <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
               </a>
             </li>
           </ul>
-        </nav>        
+        </nav>
+        
+               
       </ng-container>
       <ng-template #noRestaurants>
         <p>No hay restaurantes disponibles.</p>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ReguisterService } from '../reguister.service';
+import { ReguisterService } from '../register.service';
 import { Router } from '@angular/router';
-import { Reguister } from '../reguister';
+import { Reguister } from '../register';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,7 @@ import { Reguister } from '../reguister';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  register: Reguister = { name: '', password: '' };
+  register: Reguister = { name: '', email:'' ,password: ''};
 
   constructor(private registerService: ReguisterService, private router: Router) { }
 
@@ -18,6 +18,7 @@ export class RegisterComponent {
       .subscribe(
         response => {
           console.log('Registro exitoso:', response);
+          console.log('Datos del usuario:', this.register);
           this.router.navigate(['/index']);
         },
         error => {

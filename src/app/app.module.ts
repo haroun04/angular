@@ -10,7 +10,7 @@ import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ReviewComponent } from './review/review.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './reguister/register.component'; 
+import { RegisterComponent } from './register/register.component'; 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';

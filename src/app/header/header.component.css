@@ -1,34 +1,34 @@
 header {
-    background-color: teal; /* ROSA */
-    color: #f9ffff; /* BLANCO */
+    background-color: teal; 
+    color: #f9ffff; 
   }
   
   
   .nav-link {
-    color: #f9ffff !important; /* BLANCO */
+    color: #f9ffff !important; 
   }
   
   
   .logo {
-    height: 60px; /* Altura deseada del logotipo */
+    height: 60px; 
   }
 
   .button {
     position: relative;
     overflow: hidden;
-    height: 2.5rem; /* Reducir la altura */
-    padding: 0 1.5rem; /* Reducir el padding */
-    border-radius: 1.25rem; /* Ajustar el radio del borde */
+    height: 2.5rem; 
+    padding: 0 1.5rem;
+    border-radius: 1.25rem; 
     background: #2f2d3b;
     background-size: 400%;
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-right: 1rem; /* Margen derecho para separar los botones */
+    margin-right: 1rem; 
   }
   
   .button:last-child {
-    margin-right: 0; /* Eliminar el margen derecho del último botón */
+    margin-right: 0;
   }
   
   .button:hover::before {
@@ -58,16 +58,13 @@ header {
     transition: all 0.475s;
   }
   
-  
-  /* From uiverse.io by @satyamchaudharydev */
-/* removing default style of button */
 
 .form button {
   border: none;
   background: none;
   color: #8b8ba7;
 }
-/* styling of whole input container */
+
 .form {
   --timing: 0.3s;
   --width-of-input: 200px;
@@ -87,7 +84,6 @@ header {
   transition: border-radius 0.5s ease;
   background: var(--input-bg,#fff);
 }
-/* styling of Input */
 .input {
   font-size: 0.9rem;
   background-color: transparent;
@@ -97,7 +93,6 @@ header {
   padding-block: 0.7em;
   border: none;
 }
-/* styling of animated border */
 .form:before {
   content: "";
   position: absolute;
@@ -111,7 +106,6 @@ header {
   border-radius: 1px;
   transition: transform var(--timing) ease;
 }
-/* Hover on Input */
 .form:focus-within {
   border-radius: var(--after-border-radius);
 }
@@ -119,24 +113,19 @@ header {
 input:focus {
   outline: none;
 }
-/* here is code of animated border */
 .form:focus-within:before {
   transform: scale(1);
 }
-/* styling of close button */
-/* == you can click the close button to remove text == */
 .reset {
   border: none;
   background: none;
   opacity: 0;
   visibility: hidden;
 }
-/* close button shown when typing */
 input:not(:placeholder-shown) ~ .reset {
   opacity: 1;
   visibility: visible;
 }
-/* sizing svg icons */
 .form svg {
   width: 17px;
   margin-top: 3px;

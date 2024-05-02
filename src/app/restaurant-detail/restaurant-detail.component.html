@@ -1,4 +1,4 @@
-<div class="container text-center custom-margin" *ngIf="restaurant">
+<div class="container text-center custom-margin mt-5" *ngIf="restaurant">
   <div class="row">
     <div class="col-md-6">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -73,47 +73,3 @@
     <p class="mt-5">No existen reseñas.</p>
   </div>
 </div>
-
-
-
- <!--ZONA DE REVIEWS
-  
-  <div class="row d-flex justify-content-center">
-      <div class="col-md-10 col-xl-8 text-center">
-        <h3 class="mb-4">Testimonials</h3>
-        <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-          numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-          quisquam eum porro a pariatur veniam.
-        </p>
-      </div>
-    </div>
-
-
-      <div *ngIf="reviews.length > 0">
-    <h2 class="mt-5">List of Reviews</h2>
-    <div class="row">
-      <div class="col">
-        <ul class="list-unstyled">
-          <li *ngFor="let review of reviews" class="mb-3">
-            <div class="card">
-              <div class="card-body">
-                <p><strong>Comment:</strong> {{ review.comment }}</p>
-                <p><strong>Assessment:</strong> {{ review.assessment }}</p>
-                <p><strong>Created At:</strong> {{ review.createdAt }}</p>
-                <p><strong>User:</strong> {{ review.userName }}</p>
-                <p><strong>ProfilePicture:</strong></p>
-                <img [src]="review.userProfilePicture" alt="{{ review.userProfilePicture}}" class="img-fluid rounded-circle restaurant-image" style="width: 50px; height: 50px;">
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="reviews.length === 0">
-    <p class="mt-5">No reviews available.</p>
-  </div>
-</div>
-
-  -->
