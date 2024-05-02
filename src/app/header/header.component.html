@@ -29,15 +29,17 @@
   <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm" aria-label="Search">
 </form>
 -->
+<div class="text-end">
+  <ng-container *ngIf="!isAuthenticated()">
+    <button [routerLink]="['/login']" class="button">
+      <span class="button-content">Iniciar Sesión</span>
+    </button>
+    <button [routerLink]="['/register']" class="button">
+      <span class="button-content">Registrarse</span>
+    </button>
+  </ng-container>
+</div>
 
-      <div class="text-end">
-        <button [routerLink]="['/login']" class="button">
-          <span class="button-content">Iniciar Sesión</span>
-        </button>
-        <button [routerLink]="['/register']" class="button">
-          <span class="button-content">Registrarse</span>
-        </button>
-    </div>
     </div>
   </div>
 </header>
