@@ -22,7 +22,7 @@ export class LoginComponent {
         console.log('Login exitoso:', response);
         localStorage.setItem('token', response.token);
         
-        // Llamar al método login del AuthService para establecer el estado de autenticación
+
         this.authService.login(this.name, this.password);
 
         if (this.authService.isAuthenticated()) {
