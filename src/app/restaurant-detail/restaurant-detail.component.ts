@@ -4,6 +4,7 @@ import { Restaurant } from '../restaurant';
 import { RestaurantService } from '../restaurant.service';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -17,7 +18,8 @@ export class RestaurantDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService,
-              private reviewService: ReviewService) {}
+              private reviewService: ReviewService,
+              private authService: AuthService) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'] ?? undefined;
@@ -79,4 +81,10 @@ export class RestaurantDetailComponent implements OnInit {
   generarArreglo(assessment: number): any[] {
     return Array(assessment);
   }
+
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  
 }
