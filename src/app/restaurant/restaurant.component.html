@@ -12,7 +12,8 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h2 class="card-title">{{ restaurant.name }}</h2>
-                    <p class="card-text">{{ restaurant.location }}</p>
+                    <p><strong><i class="fas fa-utensils"></i></strong> {{ restaurant.foodStyle }}</p>
+                    <p><strong><i class="fas fa-map-marker-alt"></i></strong> {{ restaurant.location }}</p>
                     <div class="star-rating" *ngIf="restaurant.starRating !== undefined">
                       <p class="card-text" *ngFor="let star of getStars(restaurant.starRating)">
                         <img src="assets/img/estrella.png"/>

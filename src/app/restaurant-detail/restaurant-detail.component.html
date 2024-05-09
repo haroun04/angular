@@ -21,16 +21,18 @@
       </div>
     </div>
     
-    <div class="col-md-6 text-left">
+    <div class="col-md-6 text-start align-items-start ml-md-3">
       <h1>{{ restaurant.name }}</h1>
-      <p><strong>Ubicación:</strong> {{ restaurant.location }}</p>
-      <p><strong>Estilo de comida:</strong> {{ restaurant.foodStyle }}</p>
-      <p><strong>Horario:</strong> {{ restaurant.timeTable }}</p>
-      <p><strong>Capacidad:</strong> {{ restaurant.capacity }}</p>
-      <p><strong>Teléfono:</strong> {{ restaurant.phoneNumber }}</p>
-    </div>
+      <p><strong><i class="fas fa-map-marker-alt"></i></strong> {{ restaurant.location }}</p>
+      <p><strong><i class="fas fa-utensils"></i></strong> {{ restaurant.foodStyle }}</p>
+      <p><strong><i class="far fa-clock"></i></strong> {{ restaurant.timeTable }}</p>
+      <p><strong><i class="fas fa-phone"></i></strong> {{ restaurant.phoneNumber }}</p>
   </div>
   
+  
+  
+  
+  <!--<p><strong>Capacidad:</strong> {{ restaurant.capacity }}</p>-->
   
 
 
