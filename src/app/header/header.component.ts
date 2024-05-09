@@ -12,7 +12,6 @@ export class HeaderComponent {
   isLoggedIn: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) {
-    // Verifica si el usuario está autenticado al inicializar el componente
     this.isLoggedIn = this.isAuthenticated();
   }
 
@@ -25,4 +24,10 @@ export class HeaderComponent {
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/index']);
+  }
+
 }
