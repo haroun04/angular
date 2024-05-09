@@ -1,6 +1,6 @@
-<div class="container text-center custom-margin mt-5" *ngIf="restaurant">
-  <div class="row">
-    <div class="col-md-6">
+<div class="contenedor text-center custom-margin mt-5" *ngIf="restaurant">
+  <div class="row justify-content-start"> <!-- Añadí la clase justify-content-start para alinear las columnas a la izquierda -->
+    <div class="col-md-6 mb-4"> <!-- Mantuve la clase mb-4 para agregar un margen inferior al carrusel -->
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -21,15 +21,26 @@
       </div>
     </div>
     
-    <div class="col-md-6 text-start align-items-start ml-md-3">
-      <h1>{{ restaurant.name }}</h1>
-      <p><strong><i class="fas fa-map-marker-alt"></i></strong> {{ restaurant.location }}</p>
-      <p><strong><i class="fas fa-utensils"></i></strong> {{ restaurant.foodStyle }}</p>
-      <p><strong><i class="far fa-clock"></i></strong> {{ restaurant.timeTable }}</p>
-      <p><strong><i class="fas fa-phone"></i></strong> {{ restaurant.phoneNumber }}</p>
+    <div class="col-md-6 text-start align-items-start ml-md-5 columna justify-content-center text-center">
+      <h1>{{ restaurant.name }}</h1><br>
+      <div class="d-flex flex-column">
+        <p class="mb-2"><strong><i class="fas fa-map-marker-alt me-2"></i></strong> {{ restaurant.location }}</p>
+        <p class="mb-2"><strong><i class="fas fa-utensils me-2"></i></strong> {{ restaurant.foodStyle }}</p>
+        <p class="mb-2"><strong><i class="far fa-clock me-2"></i></strong> {{ restaurant.timeTable }}</p>
+        <p class="mb-2"><strong><i class="fas fa-phone me-2"></i></strong> {{ restaurant.phoneNumber }}</p><br>
+      </div>
+      <ng-container *ngIf="isAuthenticated()">
+        <button [routerLink]="['/reservar']" class="button">
+          <span class="button-content">Reservar</span>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!isAuthenticated()">
+        <button [routerLink]="['/login']" class="button">
+          <span class="button-content">Reservar</span>
+        </button>
+      </ng-container>
+    </div>
   </div>
-  
-  
   
   
   <!--<p><strong>Capacidad:</strong> {{ restaurant.capacity }}</p>-->
