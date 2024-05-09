@@ -5,22 +5,34 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private loggedIn = false;
-  private authToken: string | null = null;
+  private authTokenKey = 'authToken'; 
 
-  constructor() {}
+  constructor() {
+    
+    this.loggedIn = this.isAuthenticated();
+  }
 
+ 
   login(name: string, password: string): void {
-    // Lógica de inicio de sesión...
     this.loggedIn = true;
+    const token = 'your-auth-token'; 
+    localStorage.setItem(this.authTokenKey, token);
   }
 
+  
   logout(): void {
-    // Lógica de cierre de sesión...
     this.loggedIn = false;
+    localStorage.removeItem(this.authTokenKey);
   }
-
 
   isAuthenticated(): boolean {
-    return this.loggedIn;
+    if (typeof localStorage !== 'undefined') {
+      
+      const authToken = localStorage.getItem(this.authTokenKey);
+      return authToken !== null; 
+    } else {
+      
+      return false;
+    }
   }
 }

@@ -38,9 +38,14 @@
       <span class="button-content">Registrarse</span>
     </button>
   </ng-container>
+  <ng-container *ngIf="isAuthenticated()">
+  <button class="button" (click)="logout()">
+    <span class="button-content">Cerrar Sesion</span>
+  </button>
+  </ng-container>
 </div>
 
-    </div>
+    </div>  
   </div>
 </header>
 
