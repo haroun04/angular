@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { BookingComponent } from './booking/booking.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ReviewComponent } from './review/review.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'search-results', component: SearchResultsComponent },
   { path: 'search-results/:id', component: RestaurantDetailComponent },
   { path: 'reviews', component: ReviewComponent }, 
+  { path: 'booking', component: BookingComponent }, 
   { path: 'login', component: LoginComponent }, 
   { path: 'register', component: RegisterComponent }, 
   { path: '', redirectTo: '/index', pathMatch: 'full' },  

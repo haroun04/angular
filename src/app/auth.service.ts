@@ -14,14 +14,21 @@ export class AuthService {
 
  
   login(name: string, password: string): void {
+   
     this.loggedIn = true;
+
+    
     const token = 'your-auth-token'; 
+
     localStorage.setItem(this.authTokenKey, token);
   }
 
   
   logout(): void {
+    
     this.loggedIn = false;
+
+    
     localStorage.removeItem(this.authTokenKey);
   }
 

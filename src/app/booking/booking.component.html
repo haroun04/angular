@@ -1,0 +1,16 @@
+<div *ngIf="bookings && bookings.length > 0; else noBookings">
+    <h2>Listado de Reservas</h2>
+    <ul>
+      <li *ngFor="let booking of bookings">
+        <div>ID: {{ booking.id }}</div>
+        <div>Número de comensales: {{ booking.numberDiners }}</div>
+        <div>Fecha de creación: {{ booking.createdAt | date }}</div>
+        <div>Fecha de reserva: {{ booking.reservedAt | date }}</div>
+        <div>Restaurante: {{ booking.restaurant.name }}</div> <!-- Si restaurant es un objeto, reemplaza 'name' con el nombre de la propiedad adecuada -->
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noBookings>
+    <p>No hay reservas disponibles.</p>
+  </ng-template>
