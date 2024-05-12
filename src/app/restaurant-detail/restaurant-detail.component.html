@@ -43,13 +43,22 @@
   </div>
   
   
-  <!--<p><strong>Capacidad:</strong> {{ restaurant.capacity }}</p>-->
-  
+    <div class="container my-4">
+      <div class="row custom-section">
+          <div class="col-md-6 margin">
+              <h2>Descripción</h2><br>
+              <p>{{restaurant.description}}</p>
+          </div>
+          <div class="col-md-6">
+            <iframe [src]="extractIframeSrc(restaurant.userIframeSrc)" style="border:0; width:100%; height:500px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+      </div>
+  </div>
 
 
   <div *ngIf="reviews.length > 0">
     <h2 class="mt-5">Opiniones</h2>
-    <div class="row">
+    <div class="row ">
       <div class="col-md-4" *ngFor="let review of reviews">
         <ul class="list-unstyled">
           <li class="mb-3">

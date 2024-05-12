@@ -6,6 +6,9 @@ import { ReviewService } from '../review.service';
 import { Review } from '../review';
 import { AuthService } from '../auth.service';
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-restaurant-detail',
   templateUrl: './restaurant-detail.component.html',
@@ -15,11 +18,13 @@ export class RestaurantDetailComponent implements OnInit {
   restaurant: Restaurant | undefined;
   reviews: Review[] = [];
   id?: number;
+  userIframeSrc: SafeResourceUrl | undefined;
 
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService,
               private reviewService: ReviewService,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'] ?? undefined;
@@ -86,5 +91,17 @@ export class RestaurantDetailComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
+  extractIframeSrc(userIframeSrc: string | undefined): SafeResourceUrl | null {
+    if (userIframeSrc) {
+      const srcRegex = /<iframe.*?src=["'](.*?)["']/i;
+      const match = userIframeSrc.match(srcRegex);
+      if (match) {
+        const src = match[1];
+        return this.sanitizer.bypassSecurityTrustResourceUrl(src);
+      }
+    }
+    return null;
+  }
+  
   
 }
