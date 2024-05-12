@@ -73,7 +73,12 @@ li {
   transition: all 0.475s;
 }
 
-#map {
-  height: 400px; /* The height is 400 pixels */
-  width: 100%; /* The width is the width of the web page */
+
+.custom-section {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.margin{
+  padding: 5%;
 }

@@ -10,6 +10,8 @@
         phoneNumber ?: string;
         starRating ?: number;
         url ?: string;
+        description ?: string;
+        userIframeSrc ?: string;
         reviews ?: Review[];
         images ?: Image[];
     }
