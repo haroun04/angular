@@ -1,30 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../booking.service';  
 import { Booking } from '../booking';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrl: './booking.component.css'
+  styleUrls: ['./booking.component.css']
 })
-export class BookingComponent {
+export class BookingComponent implements OnInit {
   bookings: Booking[] = [];
-  userId: number | null = null; // Inicializa userId con null
 
   constructor(private bookingService: BookingService) { }
 
   ngOnInit(): void {
     const userIdString = localStorage.getItem('userId');
-    if (userIdString) {
-      this.userId = parseInt(userIdString, 10); // Convertir el string a number
-      this.getBookings(this.userId);
+    if (userIdString && typeof localStorage !== 'undefined') {
+      const userId = parseInt(userIdString, 10); 
+      this.bookingService.getUserBookings(userId).subscribe(
+        bookings => {
+          this.bookings = bookings; // Asignar las reservas obtenidas al arreglo de reservas del componente
+        },
+        error => {
+          console.error('Error al obtener las reservas:', error);
+        }
+      );
     } else {
-      console.error('User ID not found'); // Manejo de errores si no se encuentra el ID de usuario
+      console.error('ID de usuario no encontrado');
     }
-  }
-
-  getBookings(userId: number): void {
-    this.bookingService.getUserBookings(userId).subscribe(bookings => {
-      this.bookings = bookings;
-    });
   }
 }
