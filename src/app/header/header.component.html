@@ -25,11 +25,6 @@
         </button>
     </form>
 
-      <!--
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" (ngSubmit)="searchRestaurant()">
-  <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm" aria-label="Search">
-</form>
--->
 <div class="text-end">
   <ng-container *ngIf="!isAuthenticated()">
     <button [routerLink]="['/login']" class="button">
@@ -44,10 +39,15 @@
     <span class="button-content">Cerrar Sesion</span>
   </button>
   </ng-container>
+  <ng-container *ngIf="isAuthenticated()">
+    <a [routerLink]="['/perfil']">
+      <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="img-fluid rounded-circle restaurant-image" style="width: 50px; height: 50px;">
+    </a>
+    
+  </ng-container>
+  
 </div>
 
     </div>  
   </div>
 </header>
-
-
