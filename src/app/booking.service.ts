@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Booking } from './booking';
 
@@ -13,6 +13,8 @@ export class BookingService {
 
   getUserBookings(userId: number): Observable<Booking[]> {
     const url = `${this.baseUrl}/user/${userId}`;
-    return this.http.get<Booking[]>(url);
+    const authToken = localStorage.getItem('authToken'); 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`); 
+    return this.http.get<Booking[]>(url, { headers });
   }
 }
