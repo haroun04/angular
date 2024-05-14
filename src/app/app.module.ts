@@ -18,7 +18,7 @@ import { IndexComponent } from './index/index.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { BookingComponent } from './booking/booking.component';
-import { UserComponent } from './user/user.component'; 
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [

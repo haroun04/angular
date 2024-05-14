@@ -9,6 +9,7 @@ import { ReviewComponent } from './review/review.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'booking', component: BookingComponent }, 
   { path: 'login', component: LoginComponent }, 
   { path: 'register', component: RegisterComponent }, 
-  { path: '', redirectTo: '/index', pathMatch: 'full' },  
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  { path: 'user', component: UserComponent },
   { path: 'about', component: AboutComponent },
 ];
 

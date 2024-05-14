@@ -40,7 +40,7 @@
   </button>
   </ng-container>
   <ng-container *ngIf="isAuthenticated()">
-    <a [routerLink]="['/perfil']">
+    <a [routerLink]="['/user']">
       <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="img-fluid rounded-circle restaurant-image" style="width: 50px; height: 50px;">
     </a>
     

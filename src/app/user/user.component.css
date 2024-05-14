@@ -1,0 +1,40 @@
+.custom-section {
+    margin-top: 8%;
+    margin-bottom: 8%;
+  }
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Agregar borde */
+    padding: 10px; /* Agregar espacio interno */
+  }
+  
+  
+  .user-detail {
+    margin-bottom: 10px;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+  }
+  
+  .detail-value {
+    margin-left: 10px;
+  }
+
+.user-details:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .edit-profile-section:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .change-password-section:hover {
+    background-color: #f0f0f0;
+  }
+
+  
+  
+  

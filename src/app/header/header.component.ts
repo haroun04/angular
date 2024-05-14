@@ -40,8 +40,8 @@ export class HeaderComponent implements OnInit {
   }
 
   getUserByToken(): void {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('token') !== null) {
-      const token: string = localStorage.getItem('token') as string;
+    if (typeof localStorage !== undefined && localStorage.getItem('token') !== null) {
+      const token: string = localStorage.getItem('token') as string; // Convertir explícitamente a string
       this.userService.getUserByToken(token).subscribe(
         (user: User) => {
           this.user = user;
@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
       console.error('No se encontró el token en el localStorage');
     }
   }
+  
   
   
   
