@@ -25,7 +25,7 @@
         </button>
     </form>
 
-<div class="text-end">
+<div class="text-end" style="display: contents;">
   <ng-container *ngIf="!isAuthenticated()">
     <button [routerLink]="['/login']" class="button">
       <span class="button-content">Iniciar Sesión</span>
@@ -34,18 +34,16 @@
       <span class="button-content">Registrarse</span>
     </button>
   </ng-container>
+
   <ng-container *ngIf="isAuthenticated()">
-  <button class="button" (click)="logout()">
-    <span class="button-content">Cerrar Sesion</span>
-  </button>
-  </ng-container>
-  <ng-container *ngIf="isAuthenticated()">
-    <a [routerLink]="['/user']">
-      <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="img-fluid rounded-circle restaurant-image" style="width: 50px; height: 50px;">
-    </a>
-    
-  </ng-container>
-  
+    <button class="button" (click)="logout()">
+      <span class="button-content">Cerrar Sesion</span>
+    </button>
+      <button class="user-button" [routerLink]="['/user']">
+        <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="img-fluid rounded-circle user-image">
+        <span class="username" *ngIf="user">{{ user.name }}</span>
+      </button>
+    </ng-container>
 </div>
 
     </div>  
