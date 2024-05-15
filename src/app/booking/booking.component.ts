@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../booking.service';  
 import { Booking } from '../booking';
+import { User } from '../user';
 
 @Component({
   selector: 'app-booking',
@@ -9,23 +10,32 @@ import { Booking } from '../booking';
 })
 export class BookingComponent implements OnInit {
   bookings: Booking[] = [];
+  user: any = { bookings: [] };
 
   constructor(private bookingService: BookingService) { }
 
   ngOnInit(): void {
-    const userIdString = localStorage.getItem('userId');
-    if (userIdString && typeof localStorage !== 'undefined') {
-      const userId = parseInt(userIdString, 10); 
-      this.bookingService.getUserBookings(userId).subscribe(
-        bookings => {
-          this.bookings = bookings; // Asignar las reservas obtenidas al arreglo de reservas del componente
+    this.getUserByToken();
+  }
+
+
+  getUserByToken(): void {
+    if (typeof localStorage !== undefined && localStorage.getItem('token') !== null) {
+      const token: string = localStorage.getItem('token') as string;
+      this.bookingService.getUserByToken(token).subscribe(
+        (user: User) => {
+          this.user = user;
+          //console.log(user);
         },
-        error => {
-          console.error('Error al obtener las reservas:', error);
+        (error) => {
+          console.error('Error al obtener el usuario:', error);
         }
       );
     } else {
-      console.error('ID de usuario no encontrado');
+      console.error('No se encontró el token en el localStorage');
     }
   }
+
+
+
 }
