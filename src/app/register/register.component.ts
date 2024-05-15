@@ -19,9 +19,11 @@ export class RegisterComponent {
       .subscribe(
         response => {
           console.log('Registro exitoso:', response);
+          if (response.token) {
+            localStorage.setItem('token', response.token);
+          }
           console.log('Datos del usuario:', this.register);
           if (this.register.name !== undefined && this.register.password !== undefined) {
-            this.authService.login(this.register.name, this.register.password);
             this.router.navigate(['/index']);
           } else {
             console.error('Error al registrarse: Los campos name y password son requeridos.');

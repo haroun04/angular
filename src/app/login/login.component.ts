@@ -22,9 +22,6 @@ export class LoginComponent {
         console.log('Login exitoso:', response);
         localStorage.setItem('token', response.token);
         
-
-        this.authService.login(this.name, this.password);
-
         if (this.authService.isAuthenticated()) {
           this.router.navigate(['/index']);
         } else {

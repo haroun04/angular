@@ -12,12 +12,11 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.getUserData();
+    this.fetchUserData(); 
   }
 
-  // Método para obtener los datos del usuario
-  getUserData(): void {
-    this.authService.getUserData().subscribe(
+  fetchUserData(): void { // Cambiado de getUserData a fetchUserData
+    this.authService.fetchUserData().subscribe(
       data => {
         this.userData = data;
       },
