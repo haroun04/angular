@@ -6,22 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = false;
-  private authTokenKey = 'authToken';
+  private authTokenKey = 'token';
   private userDataEndpoint = '/api/user'; 
 
-  constructor(private http: HttpClient) {
-    this.loggedIn = this.isAuthenticated();
-  }
-
-  login(name: string, password: string): void {
-    this.loggedIn = true;
-    const token = 'your-auth-token';
-    localStorage.setItem(this.authTokenKey, token);
-  }
+  constructor(private http: HttpClient) {}
 
   logout(): void {
-    this.loggedIn = false;
     localStorage.removeItem(this.authTokenKey);
   }
 
@@ -30,9 +20,14 @@ export class AuthService {
     return authToken !== null;
   }
 
-  getUserData(): Observable<any> {
+  fetchUserData(): Observable<any> {
+    if (!this.isAuthenticated()) {
+      throw new Error('User is not authenticated.');
+    }
     const authToken = localStorage.getItem(this.authTokenKey);
     const headers = { Authorization: `Bearer ${authToken}` };
     return this.http.get<any>(this.userDataEndpoint, { headers });
   }
+
+
 }
