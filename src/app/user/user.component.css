@@ -1,40 +1,102 @@
 .custom-section {
-    margin-top: 8%;
-    margin-bottom: 8%;
-  }
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
-  .user-details {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc; /* Agregar borde */
-    padding: 10px; /* Agregar espacio interno */
-  }
-  
-  
-  .user-detail {
-    margin-bottom: 10px;
-  }
-  
-  .detail-label {
-    font-weight: bold;
-  }
-  
-  .detail-value {
-    margin-left: 10px;
-  }
+.left-column {
+  width: 30%;
+}
 
-.user-details:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .edit-profile-section:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .change-password-section:hover {
-    background-color: #f0f0f0;
-  }
+.right-column {
+  width: 65%;
+}
 
-  
-  
-  
+.welcome-message {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.user-links {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.user-links h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.link-item {
+  margin-bottom: 10px;
+}
+
+.link-item a {
+  text-decoration: none;
+  color: #555;
+}
+
+.user-details {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.user-detail {
+  margin-bottom: 15px;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.detail-value {
+  color: #333;
+}
+
+.detail-value input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+.user-links:hover, .user-details:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-button {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: teal;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
+  background: linear-gradient(
+    82.3deg,
+    rgb(111, 70, 173) 10.8%,
+    rgb(63, 56, 155) 94.3%
+  );
+  transition: all 0.475s;
+}
+
