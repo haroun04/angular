@@ -25,7 +25,7 @@ export class BookingComponent implements OnInit {
       this.bookingService.getUserByToken(token).subscribe(
         (user: User) => {
           this.user = user;
-          //console.log(user);
+          console.log(user);
         },
         (error) => {
           console.error('Error al obtener el usuario:', error);
