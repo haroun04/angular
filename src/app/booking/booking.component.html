@@ -1,20 +1,27 @@
-<div *ngIf="user?.bookings?.length > 0; else noUser">
-  <h2>Listado de Reservas</h2>
-  <ul>
-    <li *ngFor="let booking of user?.bookings">
-      <div>ID: {{ booking?.id }}</div>
-      <div>Número de comensales: {{ booking?.numberDiners }}</div>
-      <div>Fecha de creación: {{ booking?.createdAt | date }}</div>
-      <div>Fecha de reserva: {{ booking?.reservedAt | date }}</div>
-      <div *ngIf="booking?.restaurant">
-        <div>Restaurante: {{ booking?.restaurant?.name }}</div>
-        <div>Dirección: {{ booking?.restaurant?.location }}</div>
-        <div>Horario: {{ booking?.restaurant?.timetable}}</div>
+<div *ngIf="user?.bookings?.length > 0; else noUser" class="reservations-container custom-section">
+  <h2>Listado de Reservas</h2><br>
+  <ul class="reservations-list">
+    <li *ngFor="let booking of user?.bookings" class="reservation-item"><hr>
+      <div class="booking-info">
+        <div class="booking-details">
+          <div class="restaurant-name">{{ booking?.restaurant?.name }}</div>
+          <div class="reservation-time"><strong><i class="fas fa-clock"></i> Hora de reserva: </strong>{{ booking?.reservedAt | date:'dd/MM/yyyy, HH:mm' }}</div>
+          <div class="diners-number"><strong><i class="fas fa-users"></i> Número de comensales: </strong>{{ booking?.numberDiners }}</div>
+          <div class="restaurant-address"><strong><i class="fas fa-map-marker-alt"></i> Dirección: </strong>{{ booking?.restaurant?.location }}</div>
+          <button class="button" (click)="deleteBooking(booking.id)">
+            <span class="button-content">Cancelar Reserva</span>
+          </button>
+          
+          <!--(click)="cancelBooking(booking)"-->
+        </div>
+        <div class="restaurant-image">
+          <img [src]="booking?.restaurant?.url" alt="{{ booking?.restaurant?.name }}">
+        </div>
       </div>
     </li>
   </ul>
 </div>
 
-<ng-template #noUser>
-  <p>No hay reservas disponibles.</p>
+<ng-template #noUser >
+  <p class="reservations-container">No hay reservas disponibles.</p>
 </ng-template>
