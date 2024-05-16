@@ -1,58 +1,53 @@
 <div class="container custom-section" *ngIf="user">    
-  <div class="left-column">
-      <div class="user-links">
-          <h3>Enlaces Rápidos</h3>
-          <div class="link-item">
-              <a href="#">Restaurantes Favoritos</a>
-          </div>
-          <div class="link-item">
-              <a href="/booking">Reservas</a>
-          </div>
-          <div class="link-item">
-              <a href="/restaurants">Restaurantes</a>
-          </div>
-          <div class="link-item">
-              <a href="/about">Sobre Nosotros</a>
-          </div>
-      </div>
+    <div class="left-column">
+        <div class="user-links">
+            <h3>Enlaces Rápidos</h3>
+            <div class="link-item">
+                <a href="#">Restaurantes Favoritos</a>
+            </div>
+            <div class="link-item">
+                <a href="/booking">Reservas</a>
+            </div>
+            <div class="link-item">
+                <a href="/restaurants">Restaurantes</a>
+            </div>
+            <div class="link-item">
+                <a href="/about">Sobre Nosotros</a>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+        <h2 class="welcome-message">
+            <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="profile-image">
+            Bienvenido/a {{ user.name }}
+        </h2>
+        <hr>
+        <div class="user-details">
+            <h3>Información Básica</h3>
+            <div class="user-detail">
+                <div class="detail-label">Nombre:</div>
+                <div class="detail-value">
+                    <input type="text" class="form-control" [(ngModel)]="user.name" name="name">
+                </div>
+            </div>
+            <div class="user-detail">
+                <div class="detail-label">Correo Electrónico:</div>
+                <div class="detail-value">
+                    <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
+                </div>
+            </div>
+            <div class="user-detail">
+                <div class="detail-label">Imagen de Perfil:</div>
+                <div class="detail-value">
+                    <input type="file" accept="image/*" style="margin-top: 10px;">
+                </div>
+            </div>
+            <div class="user-detail text-center">
+                <button class="btn btn-primary update-button" (click)="updateUser()">Actualizar</button>
+            </div>
+        </div>
+    </div>
   </div>
-  <div class="right-column">
-      <h2 class="welcome-message">
-          <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="profile-image">
-          Bienvenido/a {{ user.name }}
-      </h2>
-      <hr>
-      <div class="user-details">
-          <h3>Información Básica</h3>
-          <div class="user-detail">
-              <div class="detail-label">Nombre:</div>
-              <div class="detail-value">
-                  <input type="text" class="form-control" [(ngModel)]="user.name" name="name">
-              </div>
-          </div>
-          <div class="user-detail">
-              <div class="detail-label">Correo Electrónico:</div>
-              <div class="detail-value">
-                  <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
-              </div>
-          </div>
-          <div class="user-detail">
-              <div class="detail-label">Imagen de Perfil:</div>
-              <div class="detail-value">
-                  <input type="file" accept="image/*" style="margin-top: 10px;">
-              </div>
-          </div>
-          <div class="user-detail">
-              <div class="detail-label">Contraseña:</div>
-              <div class="detail-value">
-                  <input type="password" class="form-control" [(ngModel)]="user.password" name="password">
-              </div>
-          </div>
-          <div class="user-detail text-center">
-              <button class="btn btn-primary update-button">Actualizar</button>
-          </div>
-      </div>
-  </div>
-</div>
+  
 
 <!--(change)="onFileSelected($event)"-->
