@@ -23,10 +23,12 @@ export class UserService {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return this.http.get<User>(`${this.baseUrl}/me`, { headers });
   }
+  updateUserInfo(updateRequest: User): Observable<User> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-  updateUser(id: number, user: User): Observable<User> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.put<User>(url, user);
+    return this.http.patch<User>(`${this.baseUrl}/me`, updateRequest, { headers });
   }
+
 
 }
