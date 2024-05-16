@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../booking.service';  
 import { Booking } from '../booking';
 import { User } from '../user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-booking',
@@ -12,7 +14,7 @@ export class BookingComponent implements OnInit {
   bookings: Booking[] = [];
   user: any = { bookings: [] };
 
-  constructor(private bookingService: BookingService) { }
+  constructor(private bookingService: BookingService, private http: HttpClient, ) { }
 
   ngOnInit(): void {
     this.getUserByToken();
@@ -36,6 +38,16 @@ export class BookingComponent implements OnInit {
     }
   }
 
-
-
+  deleteBooking(id: number) {
+    this.http.delete(`http://localhost:8080/api/bookings/${id}`)
+        .subscribe(
+            () => {
+                console.log('Reserva eliminada exitosamente');
+                this.getUserByToken();
+            },
+            error => {
+                console.error('Error al eliminar la reserva:', error);
+            }
+        );
+  }
 }

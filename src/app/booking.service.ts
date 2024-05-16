@@ -9,6 +9,7 @@ import { User } from './user';
 })
 export class BookingService {
   private baseUrl = 'http://localhost:8080/api/user';
+  private baseUrlBooking = 'http://localhost:8080/api/bookings';
 
   constructor(private http: HttpClient) { }
 
@@ -22,5 +23,10 @@ export class BookingService {
   getUserByToken(token: string): Observable<User> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return this.http.get<User>(`${this.baseUrl}/me`, { headers });
+  }
+
+  deleteBooking(id: number): Observable<void> {
+    const url = `${this.baseUrlBooking}/${id}`;
+    return this.http.delete<void>(url);
   }
 }
