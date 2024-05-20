@@ -1,0 +1,119 @@
+.reservations-container {
+    color: rgb(33, 37, 41);
+    margin: 5%;
+  }
+  
+  h2 {
+    color: rgb(33, 37, 41);
+    padding-bottom: 10px;
+  }
+  
+  .reservations-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .reservation-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .booking-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .booking-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-basis: 60%;
+  }
+
+  .restaurant-image {
+    flex-basis: 40%;
+    cursor: pointer;
+  }
+  
+  .restaurant-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: teal;
+  }
+  
+  .reservation-time, .diners-number, .restaurant-address {
+    font-size: 1em;
+  }
+  
+  .restaurant-image img {
+    max-width: 80%; 
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Botón */
+  .button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem; 
+    padding: 0 2rem; 
+    border-radius: 1.5rem;
+    background: #2f2d3b;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; 
+    width: 30%; 
+  }
+  
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgb(165, 41, 41) 10.8%,
+      rgb(231, 9, 9) 94.3%
+    );
+    transition: all 0.475s;
+  }
+
+
+  @media (max-width: 768px) {
+    .button {
+        width: 100%;
+      padding: 0 1.5rem; /* Ajuste de padding para dispositivos móviles */
+      height: 2.5rem; /* Ajuste de altura para dispositivos móviles */
+      border-radius: 1.25rem; /* Ajuste de radio de borde para dispositivos móviles */
+      font-size: 0.9rem; /* Ajuste de tamaño de fuente para dispositivos móviles */
+    }
+  }
+  

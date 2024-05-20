@@ -3,7 +3,6 @@ import { BookingService } from '../booking.service';
 import { Booking } from '../booking';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-booking',

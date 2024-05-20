@@ -36,7 +36,6 @@ export class UserComponent implements OnInit {
     if (this.user) {
       this.userService.updateUserInfo(this.user).subscribe(
         (updatedUser: User) => {
-          // Manejar la respuesta o realizar alguna acción adicional si es necesario
           console.log('Usuario actualizado:', updatedUser);
         },
         (error) => {

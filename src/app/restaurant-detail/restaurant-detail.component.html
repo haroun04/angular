@@ -57,7 +57,7 @@
 
 
   <div class="row" >
-    <div class="col-md-4">
+    <div class="col-md-4" *ngIf="isAuthenticated()">
       <div>
         <h2 class="mt-5">Deja tu opinión</h2>
         <form (ngSubmit)="submitReview()"> <!--(ngSubmit)="submitReview()"-->
@@ -81,8 +81,7 @@
     </div>
     
     
-    <div class="col-md-8">
-
+    <div class="col-md-{{ isAuthenticated() ? '8' : '12' }}">
       <div *ngIf="reviews.length > 0">
         <h2 class="mt-5">Opiniones</h2>
         <div class="row ">
@@ -117,7 +116,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
   

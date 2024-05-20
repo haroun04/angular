@@ -14,7 +14,7 @@ export class FrService {
   constructor(private http: HttpClient) { }
 
   getUserFr(userId: number): Observable<Fr[]> {
-    const url = `${this.baseUrl}/user/${userId}`; 
+    const url = `${this.baseUrl}/${userId}`; 
     const authToken = localStorage.getItem('authToken'); 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`); 
     return this.http.get<Fr[]>(url, { headers });
