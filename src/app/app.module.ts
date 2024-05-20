@@ -19,6 +19,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { BookingComponent } from './booking/booking.component';
 import { UserComponent } from './user/user.component';
+import { FrComponent } from './fr/fr.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserComponent } from './user/user.component';
     IndexComponent,
     AuthComponent,
     BookingComponent,
+    FrComponent,
     UserComponent,
   ],
   imports: [
