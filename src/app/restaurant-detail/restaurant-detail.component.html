@@ -56,40 +56,78 @@
   </div>
 
 
-  <div *ngIf="reviews.length > 0">
-    <h2 class="mt-5">Opiniones</h2>
-    <div class="row ">
-      <div class="col-md-4" *ngFor="let review of reviews">
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <section>
-              <div class="row text-center">
-                <div class="col-md-12 mb-0">
-                  <div class="d-flex justify-content-center mb-4">
-                    <img [src]="review.userProfilePicture" alt="{{ review.userProfilePicture}}" class="img-fluid rounded-circle " style="width: 50px; height: 50px;">
-                  </div>
-                  <h5 class="mb-3">{{review.userName}}</h5>
-                  <h6 class="text-primary mb-3">{{review.createdAt | date:'dd/MM/yyyy, HH:mm' }}</h6>
-                  <p class="px-xl-3">
-                    <i class="fas fa-quote-left pe-2"></i>{{review.comment}}
-                  </p>
-                  <ul class="list-unstyled d-flex justify-content-center mb-0">
-                    <div *ngIf="review.assessment !== undefined">
-                      <ul class="list-unstyled d-flex justify-content-center mb-0">
-                        <li *ngFor="let _ of generarArreglo(review.assessment)">
-                          <i class="fas fa-star fa-sm text-warning"></i>
-                        </li>
-                      </ul>
-                    </div>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </li>
-        </ul>
+  <div class="row" >
+    <div class="col-md-4">
+      <div>
+        <h2 class="mt-5">Deja tu opinión</h2>
+        <form (ngSubmit)="submitReview()"> <!--(ngSubmit)="submitReview()"-->
+          <div class="mb-3">
+            <textarea class="form-control" id="comment" rows="3" [(ngModel)]="newReview.comment" name="comment" required></textarea>
+          </div>
+          <div class="mb-3">
+            <div class="star-rating">
+              <i class="fa fa-star" [class.filled]="newReview.assessment >= 1" (click)="setRating(1)"></i>
+              <i class="fa fa-star" [class.filled]="newReview.assessment >= 2" (click)="setRating(2)"></i>
+              <i class="fa fa-star" [class.filled]="newReview.assessment >= 3" (click)="setRating(3)"></i>
+              <i class="fa fa-star" [class.filled]="newReview.assessment >= 4" (click)="setRating(4)"></i>
+              <i class="fa fa-star" [class.filled]="newReview.assessment >= 5" (click)="setRating(5)"></i>
+            </div>
+          </div>
+          <button class="button" type="submit">
+            <span class="button-content">Enviar</span>
+          </button>
+        </form>
       </div>
     </div>
+    
+    
+    <div class="col-md-8">
+
+      <div *ngIf="reviews.length > 0">
+        <h2 class="mt-5">Opiniones</h2>
+        <div class="row ">
+          <div class="col-md-4" *ngFor="let review of reviews">
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <section>
+                  <div class="row text-center">
+                    <div class="col-md-12 mb-0">
+                      <div class="d-flex justify-content-center mb-4">
+                        <img [src]="review.userProfilePicture" alt="{{ review.userProfilePicture}}" class="img-fluid rounded-circle " style="width: 50px; height: 50px;">
+                      </div>
+                      <h5 class="mb-3">{{review.userName}}</h5>
+                      <h6 class="text-primary mb-3">{{review.createdAt | date:'dd/MM/yyyy, HH:mm' }}</h6>
+                      <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>{{review.comment}}
+                      </p>
+                      <ul class="list-unstyled d-flex justify-content-center mb-0">
+                        <div *ngIf="review.assessment !== undefined">
+                          <ul class="list-unstyled d-flex justify-content-center mb-0">
+                            <li *ngFor="let _ of generarArreglo(review.assessment)">
+                              <i class="fas fa-star fa-sm text-warning"></i>
+                            </li>
+                          </ul>
+                        </div>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+  
+
+
+  
+
+
+ 
+  
   
   <div *ngIf="reviews.length === 0">
     <p class="mt-5">No existen reseñas.</p>

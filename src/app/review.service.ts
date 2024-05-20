@@ -20,8 +20,12 @@ export class ReviewService {
     return this.http.get<Review[]>(`${this.baseUrl}/restaurant/${restaurantId}`);
   }
 
-  createReview(restaurantId: number, review: Review): Observable<Review> {
-    return this.http.post<Review>(`${this.baseUrl}/restaurant/${restaurantId}`, review);
+  //createReview(restaurantId: number, review: Review): Observable<Review> {
+   // return this.http.post<Review>(`${this.baseUrl}/restaurant/${restaurantId}`, review);
+  //}
+
+  createReview(review: Review): Observable<Review> {
+    return this.http.post<Review>(this.baseUrl, review);
   }
 
   //Coger nombre del usuario

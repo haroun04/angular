@@ -82,3 +82,25 @@ li {
 .margin{
   padding: 5%;
 }
+
+
+/*ESTRELLAS*/
+
+.star-rating {
+  display: flex;
+  justify-content: center; 
+  gap: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px; 
+}
+
+.star-rating .fa-star {
+  font-size: 2rem;
+  color: #ccc; 
+  cursor: pointer;
+}
+
+.star-rating .fa-star.filled {
+  color: #ffc107;
+}
+

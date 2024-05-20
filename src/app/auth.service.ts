@@ -30,5 +30,4 @@ export class AuthService {
     return this.http.get<any>(this.userDataEndpoint, { headers });
   }
 
-
 }

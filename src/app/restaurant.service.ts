@@ -38,4 +38,6 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`${this.baseUrl}/search?name=${name}`);
   }
 
+  
+
 }

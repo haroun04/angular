@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../restaurant';
 import { RestaurantService } from '../restaurant.service';
 import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-restaurant',
@@ -72,4 +73,6 @@ updatePage(): void {
       this.router.navigate(['/restaurants'], { queryParams: { page: this.currentPage } }); //Este enlace se realiza por que cuando dejamos el href con el # nnos manda al index pues se hace una redirecion
     }
 }
+
+
 }

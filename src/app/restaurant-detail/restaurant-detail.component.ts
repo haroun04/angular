@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Restaurant } from '../restaurant';
 import { RestaurantService } from '../restaurant.service';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
 import { AuthService } from '../auth.service';
+import { BookingService } from '../booking.service';
+import { User } from '../user';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { DomSanitizer } from '@angular/platform-browser';
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -19,17 +22,31 @@ export class RestaurantDetailComponent implements OnInit {
   reviews: Review[] = [];
   id?: number;
   userIframeSrc: SafeResourceUrl | undefined;
+  user: User | undefined;
+
+  newReview: any = { 
+    comment: '',
+    assessment: 0,
+    name:'',
+    userProfilePicture: '',
+    userId: 0,
+    restaurantId: 0
+  };
 
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService,
               private reviewService: ReviewService,
               private authService: AuthService,
-              private sanitizer: DomSanitizer) {}
+              private sanitizer: DomSanitizer,
+              private router: Router,
+              private bookingService: BookingService) {}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'] ?? undefined;
     if (this.id !== undefined) {
       this.getRestaurantDetails(this.id);
+      this.newReview.restaurantId = this.id; 
+       this.getUserByToken();
     }
   }
 
@@ -53,7 +70,6 @@ export class RestaurantDetailComponent implements OnInit {
         });
       });
   }
-  
 
   getReviewUserName(reviewId: number): void {
     this.reviewService.getReviewUserName(reviewId).subscribe({
@@ -102,6 +118,48 @@ export class RestaurantDetailComponent implements OnInit {
     }
     return null;
   }
+
+
+  getUserByToken(): void {
+    if (typeof localStorage !== undefined && localStorage.getItem('token') !== null) {
+      const token: string = localStorage.getItem('token') as string;
+      this.bookingService.getUserByToken(token).subscribe(
+        (user: User) => {
+          this.user = user;
+        },
+        (error) => {
+          console.error('Error al obtener el usuario:', error);
+        }
+      );
+    } else {
+      console.error('No se encontró el token en el localStorage');
+    }
+  }
+
+
+  setRating(rating: number): void {
+    this.newReview.assessment = rating;
+  }
+
+  submitReview(): void {
+    if (this.restaurant && this.user) {
+      this.newReview.restaurantId = this.restaurant.id!;
+      this.newReview.userId = this.user.id;
+      this.newReview.name = 'Hola';
+      this.newReview.userProfilePicture= this.getReviewUserProfilePicture(this.user.id);
+      console.log(this.newReview);
+      
+      this.reviewService.createReview(this.newReview).subscribe(
+        response => {
+          window.location.reload();
+          console.log('Review created successfully');
+        },
+        error => {
+          console.error('Error creating review', error);
+        }
+      );
+    }
+  }
   
-  
+
 }

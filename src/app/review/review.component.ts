@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Review } from '../review';
 import { ReviewService } from '../review.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-review',
@@ -8,9 +10,16 @@ import { ReviewService } from '../review.service';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
+  private baseUrl = 'http://localhost:8080/api/reviews';
   reviews: Review[] = [];
 
-  constructor(private reviewService: ReviewService) { }
+  newReview = {
+    assessment: 0,
+    comment: '',
+    userProfilePicture: ''
+  };
+
+  constructor(private reviewService: ReviewService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getAllReviews();
@@ -56,6 +65,9 @@ export class ReviewComponent implements OnInit {
     });
   }
 
+  createReview(review: Review): Observable<Review> {
+    return this.http.post<Review>(this.baseUrl, review);
+  }
   
 
 }
