@@ -1,0 +1,20 @@
+<div *ngIf="user?.frs?.length > 0; else noUser" class="reservations-container custom-section">
+    <h2>Listado de restaurantes favoritos</h2><br>
+    <ul class="reservations-list">
+      <li *ngFor="let fr of user?.frs" class="reservation-item"><hr>
+        <div class="booking-info">
+          <div class="booking-details">
+            <div class="restaurant-name">{{ fr.id }}</div>
+          </div>
+          <div class="restaurant-image">
+            <img [src]="fr?.restaurant?.url" alt="{{ fr?.restaurant?.name }}">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noUser >
+    <p class="reservations-container">No hay restaurantes favoritos disponibles.</p>
+  </ng-template>
+  
