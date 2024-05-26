@@ -19,6 +19,9 @@ export class ReservaComponent{
   numberDiners: number | undefined;
   selectedDate: string = '';
   selectedTime: string = '';
+  currentDate: Date = new Date();
+  error: string = '';
+  successMessage: string = '';
 
   constructor(private restaurantService: RestaurantService, private router: Router, private route: ActivatedRoute,
     private bookingService: BookingService
@@ -58,21 +61,36 @@ export class ReservaComponent{
   }
 
   createBooking(): void {
+    const today = new Date();
     this.booking.numberDiners = Number(this.numberDiners);
-    this.booking.reservedAt = new Date(this.selectedDate + 'T' + this.selectedTime);
+    const localDate = new Date(this.selectedDate + 'T' + this.selectedTime);
+    this.booking.reservedAt = new Date(localDate.getTime() - (localDate.getTimezoneOffset() * 60000));//Zonas horarias de los servidores
+    console.log(this.booking.reservedAt);
     this.booking.restaurantId = this.restaurant?.id;
     this.booking.userId = this.user?.id;
-  
+
+    if (this.booking.reservedAt < today) {
+      this.error = 'La fecha de reserva no puede ser anterior a hoy.';
+      this.successMessage = '';
+      return;
+    }
+
+    if (this.numberDiners && !/^[1-6]$/.test(this.numberDiners.toString())) {
+      this.error = 'Debe introducir un número entre 1 y 6.';
+      this.successMessage = '';
+      return;
+    }
+
     this.bookingService.saveBooking(this.booking).subscribe(
       (savedBooking: Booking) => {
-        console.log('Reserva guardada:');
+        this.successMessage = 'Reserva guardada correctamente.';
+        this.error = '';
       },
       (error) => {
-        console.error('Error al guardar la reserva:', error);
+        this.error = 'Error al guardar la reserva.';
+        this.successMessage = '';
       }
     );
   }
-  
-
  
 }

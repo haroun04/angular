@@ -30,33 +30,28 @@
 
         <!--FORMULARIO-->     
         <section class="section_form mb-5">
-          <form class="feed-form" (ngSubmit)="createBooking()">
+          <form class="feed-form" (ngSubmit)="createBooking()" #bookingForm="ngForm">
             <div class="form-grid">
-              <input required placeholder="Name" type="text" disabled value={{user?.name}}>
-            <input name="phone" required placeholder="Phone number" pattern="^\d{1,9}$" maxlength="9">
-            <input name="email" required placeholder="E-mail" type="email" disabled value={{user?.email}}>
-            <input type="date" class="form-control" placeholder="Selecciona la fecha" required name="selectedDate" [(ngModel)]="selectedDate">
-
-            <input type="time" class="form-control" placeholder="Selecciona la hora" required name="selectedTime" [(ngModel)]="selectedTime">
-
-            <select name="numberDiners" [(ngModel)]="numberDiners" required class="form-control">
-              <option value="" disabled selected>Número de comensales</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+              <input required placeholder="Name" type="text" disabled [value]="user?.name">
+              <input name="phone" required placeholder="Teléfono" pattern="^\d{1,9}$" maxlength="9" ngModel>
+              <input name="email" required placeholder="E-mail" type="email" disabled [value]="user?.email">
+              <input type="date" class="form-control" placeholder="Selecciona la fecha" required name="selectedDate" [(ngModel)]="selectedDate">
+              <input type="time" class="form-control" placeholder="Selecciona la hora" required name="selectedTime" [(ngModel)]="selectedTime">
+              <input type="text" name="numberDiners" placeholder="Número de comensales" [(ngModel)]="numberDiners" required class="form-control" pattern="[1-6]" maxlength="1" #numberDinersInput="ngModel">
             </div>
-            <button class="button_submit">ORDER</button>
-            <p class="sign-up-label text-center" >
+            <button class="button_submit" [disabled]="!bookingForm.form.valid">RESERVAR</button>
+            <p class="error-message" *ngIf="error">{{ error }}</p>
+            <p class="error-message" *ngIf="numberDinersInput.invalid && (numberDinersInput.dirty || numberDinersInput.touched)">
+              Debe introducir un número entre 1 y 6.
+            </p>
+            <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+            <p class="sign-up-label text-center">
               <a class="sign-up-link" *ngIf="restaurant" [routerLink]="['/restaurant-detail', restaurant.id]">Volver</a>
             </p>
-            
           </form>
+        </section>
+        
           
-        </section>  
       </div>
     </div>
   </div>
@@ -69,32 +64,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <!-- Custom Script -->
 
-  <script>
-    $(document).ready(function(){
-      const timetable = "07:00 AM - 07:00 PM";
-      const [startTime, endTime] = timetable.split(" - ").map(time => moment(time, "hh:mm A"));
-
-      $('#fechaReserva .input-group.date').datepicker({
-        format: 'dd/mm/yyyy',
-        startDate: '0d',
-        autoclose: true
-      });
-
-      function setDefaultTimeOptions() {
-        const $timeInput = $('input[name="horaReserva"]');
-        const now = moment();
-        if (now.isBefore(startTime)) {
-          $timeInput.val(startTime.format("HH:mm"));
-        } else if (now.isAfter(endTime)) {
-          $timeInput.val(endTime.format("HH:mm"));
-        } else {
-          $timeInput.val(now.format("HH:mm"));
-        }
-      }
-
-      setDefaultTimeOptions();
-    });
-  </script>
-
+  
 
   

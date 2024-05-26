@@ -60,9 +60,12 @@
     <div class="col-md-4" *ngIf="isAuthenticated()">
       <div>
         <h2 class="mt-5">Deja tu opinión</h2>
-        <form (ngSubmit)="submitReview()"> <!--(ngSubmit)="submitReview()"-->
+        <form (ngSubmit)="submitReview()">
           <div class="mb-3">
             <textarea class="form-control" id="comment" rows="3" [(ngModel)]="newReview.comment" name="comment" required></textarea>
+            <div *ngIf="newReview.comment.trim() === '' && submitted" class="text-danger">
+              El comentario es requerido.
+            </div>
           </div>
           <div class="mb-3">
             <div class="star-rating">
@@ -72,11 +75,15 @@
               <i class="fa fa-star" [class.filled]="newReview.assessment >= 4" (click)="setRating(4)"></i>
               <i class="fa fa-star" [class.filled]="newReview.assessment >= 5" (click)="setRating(5)"></i>
             </div>
+            <div *ngIf="newReview.assessment === 0 && submitted" class="text-danger">
+              La calificación es requerida.
+            </div>
           </div>
-          <button class="button" type="submit">
+          <button class="button" type="submit" (click)="submitted=true">
             <span class="button-content">Enviar</span>
           </button>
         </form>
+        
       </div>
     </div>
     

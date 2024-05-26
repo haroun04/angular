@@ -7,7 +7,6 @@ import { Review } from '../review';
 import { AuthService } from '../auth.service';
 import { BookingService } from '../booking.service';
 import { User } from '../user';
-
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -30,6 +29,8 @@ export class RestaurantDetailComponent implements OnInit {
     userId: 0,
     restaurantId: 0
   };
+
+  submitted: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService,
@@ -147,10 +148,15 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   submitReview(): void {
+    this.submitted = true;
+    if (this.newReview.comment.trim() === '' || this.newReview.assessment === 0) {
+      console.error('Formulario inválido');
+      return;
+    }
+
     if (this.restaurant && this.user) {
       this.newReview.restaurantId = this.restaurant.id!;
       this.newReview.userId = this.user.id;
-      this.newReview.userProfilePicture= this.getReviewUserProfilePicture(this.user.id);
       
       this.reviewService.createReview(this.newReview).subscribe(
         response => {
