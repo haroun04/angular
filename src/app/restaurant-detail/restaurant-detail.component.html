@@ -30,7 +30,7 @@
         <p class="mb-2"><strong><i class="fas fa-phone me-2"></i></strong> {{ restaurant.phoneNumber }}</p><br>
       </div>
       <ng-container *ngIf="isAuthenticated()">
-        <button [routerLink]="['/reservar']" class="button">
+        <button (click)="verDetalles(restaurant.id!)" class="button">
           <span class="button-content">Reservar</span>
         </button>
       </ng-container>

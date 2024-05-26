@@ -107,10 +107,10 @@
   @media (max-width: 768px) {
     .button {
         width: 100%;
-      padding: 0 1.5rem; /* Ajuste de padding para dispositivos móviles */
-      height: 2.5rem; /* Ajuste de altura para dispositivos móviles */
-      border-radius: 1.25rem; /* Ajuste de radio de borde para dispositivos móviles */
-      font-size: 0.9rem; /* Ajuste de tamaño de fuente para dispositivos móviles */
+      padding: 0 1.5rem;
+      height: 2.5rem;
+      border-radius: 1.25rem;
+      font-size: 0.9rem;
     }
   }
   

@@ -1,0 +1,100 @@
+
+<div class="contenedor text-center custom-margin mt-5" *ngIf="restaurant">
+    <div class="row justify-content-start">
+      <div class="col-md-6 mb-4"> 
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img [src]="restaurant.url" alt="{{ restaurant.name }}" class="d-block w-100">
+            </div>
+            <div *ngFor="let image of restaurant.images; let i = index" class="carousel-item">
+              <img [src]="image.url" alt="{{ restaurant.name }}" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="col-md-6 text-start align-items-start ml-md-5 columna justify-content-center text-center">
+        <h1>{{ restaurant.name }}</h1><br>
+        <div class="d-flex flex-column">
+          <p class="mb-2"><strong><i class="fas fa-map-marker-alt me-2"></i></strong> {{ restaurant.location }}</p><br>
+        </div>   
+
+        <!--FORMULARIO-->     
+        <section class="section_form mb-5">
+          <form class="feed-form" (ngSubmit)="createBooking()">
+            <div class="form-grid">
+              <input required placeholder="Name" type="text" disabled value={{user?.name}}>
+            <input name="phone" required placeholder="Phone number" pattern="^\d{1,9}$" maxlength="9">
+            <input name="email" required placeholder="E-mail" type="email" disabled value={{user?.email}}>
+            <input type="date" class="form-control" placeholder="Selecciona la fecha" required name="selectedDate" [(ngModel)]="selectedDate">
+
+            <input type="time" class="form-control" placeholder="Selecciona la hora" required name="selectedTime" [(ngModel)]="selectedTime">
+
+            <select name="numberDiners" [(ngModel)]="numberDiners" required class="form-control">
+              <option value="" disabled selected>Número de comensales</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            </div>
+            <button class="button_submit">ORDER</button>
+            <p class="sign-up-label text-center" >
+              <a class="sign-up-link" *ngIf="restaurant" [routerLink]="['/restaurant-detail', restaurant.id]">Volver</a>
+            </p>
+            
+          </form>
+          
+        </section>  
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Datepicker JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <!-- Moment.js for date manipulation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- Custom Script -->
+
+  <script>
+    $(document).ready(function(){
+      const timetable = "07:00 AM - 07:00 PM";
+      const [startTime, endTime] = timetable.split(" - ").map(time => moment(time, "hh:mm A"));
+
+      $('#fechaReserva .input-group.date').datepicker({
+        format: 'dd/mm/yyyy',
+        startDate: '0d',
+        autoclose: true
+      });
+
+      function setDefaultTimeOptions() {
+        const $timeInput = $('input[name="horaReserva"]');
+        const now = moment();
+        if (now.isBefore(startTime)) {
+          $timeInput.val(startTime.format("HH:mm"));
+        } else if (now.isAfter(endTime)) {
+          $timeInput.val(endTime.format("HH:mm"));
+        } else {
+          $timeInput.val(now.format("HH:mm"));
+        }
+      }
+
+      setDefaultTimeOptions();
+    });
+  </script>
+
+
+  

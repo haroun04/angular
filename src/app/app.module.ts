@@ -20,6 +20,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { BookingComponent } from './booking/booking.component';
 import { UserComponent } from './user/user.component';
 import { FrComponent } from './fr/fr.component';
+import { ReservaComponent } from './reserva/reserva.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { FrComponent } from './fr/fr.component';
     BookingComponent,
     FrComponent,
     UserComponent,
+    ReservaComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
