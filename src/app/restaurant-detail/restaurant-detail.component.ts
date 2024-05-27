@@ -7,9 +7,6 @@ import { Review } from '../review';
 import { AuthService } from '../auth.service';
 import { BookingService } from '../booking.service';
 import { User } from '../user';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -33,6 +30,8 @@ export class RestaurantDetailComponent implements OnInit {
     restaurantId: 0
   };
 
+  submitted: boolean = false;
+
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService,
               private reviewService: ReviewService,
@@ -51,14 +50,21 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   getRestaurantDetails(id: number): void {
-    this.restaurantService.getRestaurantById(id)
-      .subscribe(restaurant => {
-        this.restaurant = restaurant;
-        if (this.restaurant !== undefined) {
-          this.getReviewsByRestaurantId(this.restaurant.id!); 
+    this.restaurantService.getRestaurantById(id).subscribe(
+      restaurant => {
+        if (restaurant) {
+          this.restaurant = restaurant;
+          this.getReviewsByRestaurantId(this.restaurant.id!);
+        } else {
+          this.router.navigate(['/page-not-found']);
         }
-      });
+      },
+      error => {
+        this.router.navigate(['/page-not-found']);
+      }
+    );
   }
+  
 
   getReviewsByRestaurantId(restaurantId: number): void {
     this.reviewService.getReviewsByRestaurantId(restaurantId)
@@ -142,12 +148,15 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   submitReview(): void {
+    this.submitted = true;
+    if (this.newReview.comment.trim() === '' || this.newReview.assessment === 0) {
+      console.error('Formulario inválido');
+      return;
+    }
+
     if (this.restaurant && this.user) {
       this.newReview.restaurantId = this.restaurant.id!;
       this.newReview.userId = this.user.id;
-      this.newReview.name = 'Hola';
-      this.newReview.userProfilePicture= this.getReviewUserProfilePicture(this.user.id);
-      console.log(this.newReview);
       
       this.reviewService.createReview(this.newReview).subscribe(
         response => {
@@ -159,6 +168,10 @@ export class RestaurantDetailComponent implements OnInit {
         }
       );
     }
+  }
+
+  verDetalles(id: number): void {
+    this.router.navigate(['reserva', id]);
   }
   
 

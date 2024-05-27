@@ -1,0 +1,185 @@
+
+
+@media (max-width: 992px) {
+    .custom-margin {
+      padding-bottom: 10%;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .custom-margin {
+      padding-bottom: 20%;
+    }
+  }
+  
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 20px;
+  }
+  
+  .contenedor{
+    margin:8%;
+  }
+  
+  
+  /*BOTON*/
+  .button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem; 
+    padding: 0 2rem; 
+    border-radius: 1.5rem;
+    background: #2f2d3b;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem; 
+  }
+  
+  .button:last-child {
+    margin-right: 0;
+  }
+  
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgb(111, 70, 173) 10.8%,
+      rgb(63, 56, 155) 94.3%
+    );
+    transition: all 0.475s;
+  }
+  
+  
+  .custom-section {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  
+  .margin{
+    padding: 5%;
+  }
+  
+  /*FORM*/
+  
+  .section_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .feed-form {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .feed-form input, .feed-form select, .input-group.date {
+    height: 54px;
+    border-radius: 5px;
+    background: white;
+    border: 1px solid teal;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4B4B4B;
+  }
+  
+  .input-group-append .input-group-text {
+    border-radius: 5px;
+    background: white;
+    border: 1px solid teal;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+
+  
+  .button_submit:hover, .feed-form input:hover{
+    transform: scale(1.009);
+    box-shadow: 0px 0px 3px 0px #212529;
+  }
+
+  .button_submit:hover, .feed-form select:hover{
+    transform: scale(1.009);
+    box-shadow: 0px 0px 3px 0px #212529;
+  }
+  
+  .button_submit {
+    width: 100%;
+    height: 54px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: white;
+    background: teal;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+
+  .sign-up-label {
+    margin: 20px;
+    font-size: 10px;
+    color: #747474;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  
+  .sign-up-link {
+    margin-left: 1px;
+    font-size: 11px;
+    text-decoration: underline;
+    text-decoration-color: teal;
+    color: teal;
+    cursor: pointer;
+    font-weight: 800;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+
+  .error-message {
+    margin: 15px;
+    color: red;
+  }
+  
+  .success-message {
+    margin: 15px;
+    color: green;
+  }
+  
+  
+  
+  

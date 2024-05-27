@@ -29,4 +29,11 @@ export class BookingService {
     const url = `${this.baseUrlBooking}/${id}`;
     return this.http.delete<void>(url);
   }
+
+  saveBooking(booking: Booking): Observable<Booking> {
+    const authToken = localStorage.getItem('authToken'); 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`); 
+    return this.http.post<Booking>(this.baseUrlBooking, booking, { headers });
+  }
+  
 }
