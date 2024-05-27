@@ -20,6 +20,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { BookingComponent } from './booking/booking.component';
 import { UserComponent } from './user/user.component';
 import { FrComponent } from './fr/fr.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { IndexAdminComponent } from './index-admin/index-admin.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { FrComponent } from './fr/fr.component';
     BookingComponent,
     FrComponent,
     UserComponent,
+    LoginAdminComponent,
+    IndexAdminComponent,
   ],
   imports: [
     BrowserModule,

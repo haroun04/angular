@@ -54,6 +54,7 @@ updatePage(): void {
     this.router.navigate(['/restaurants'], { queryParams: { page: page } });//Este enlace se realiza por que cuando dejamos el href con el # nnos manda al index pues se hace una redirecion
   }
   
+  
   prevPage(event: any): void {
     event.preventDefault(); //se crea el evento para que no sea default y se vaya a el index
     if (this.currentPage > 1) {

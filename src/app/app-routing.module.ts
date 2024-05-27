@@ -11,6 +11,8 @@ import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { IndexAdminComponent } from './index-admin/index-admin.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'user', component: UserComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'login/admin', component: LoginAdminComponent }, 
+  { path: 'indexAdmin', component: IndexAdminComponent },
 ];
 
 
