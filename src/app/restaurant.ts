@@ -1,4 +1,5 @@
-    import { Review } from './review';
+    import { Fr } from './fr';
+import { Review } from './review';
 
     export class Restaurant {
         id ?: number;
@@ -14,9 +15,12 @@
         userIframeSrc ?: string;
         reviews ?: Review[];
         images ?: Image[];
+        favoriteRestaurants?: Fr[];
     }
 
     export class Image {
         id ?: number;
         url ?: string;
     }
+
+    

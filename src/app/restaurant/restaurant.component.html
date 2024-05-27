@@ -19,15 +19,21 @@
                         <img src="assets/img/estrella.png"/>
                       </p>
                     </div>
+                   <!--<div class="heart-rating">
+                      <i class="fa fa-heart" 
+                         [class.liked]="restaurant.favoriteRestaurants" 
+                         (click)="toggleLike(restaurant)">
+                      </i>
+                    </div>     -->             
                   </div>
                 </div>
               </div>
             </div>
           </li>
         </ul>
-        <nav aria-label="Page navigation ">
-          <ul class="pagination justify-content-center custom-pagination ">
-            <li class="page-item " [class.disabled]="currentPage === 1">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center custom-pagination">
+            <li class="page-item" [class.disabled]="currentPage === 1">
               <a class="page-link rounded-circle border-0" href="#" aria-label="Previous" (click)="prevPage($event)">
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
@@ -44,8 +50,6 @@
             </li>
           </ul>
         </nav>
-        
-               
       </ng-container>
       <ng-template #noRestaurants>
         <p>No hay restaurantes disponibles.</p>

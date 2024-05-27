@@ -11,6 +11,8 @@ import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { IndexAdminComponent } from './index-admin/index-admin.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'user', component: UserComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'login/admin', component: LoginAdminComponent }, 
+  { path: 'indexAdmin', component: IndexAdminComponent },
   { path: 'reserva/:id', component: ReservaComponent },
   { path: '', redirectTo: '/index', pathMatch: 'full' },// redireccion automatica al index si no se encuentra
   { path: '**', component: PageNotFoundComponent }
