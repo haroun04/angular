@@ -22,6 +22,7 @@ export class ReservaComponent{
   currentDate: Date = new Date();
   error: string = '';
   successMessage: string = '';
+  formSubmitted: boolean = false;
 
   constructor(private restaurantService: RestaurantService, private router: Router, private route: ActivatedRoute,
     private bookingService: BookingService
@@ -64,8 +65,7 @@ export class ReservaComponent{
     const today = new Date();
     this.booking.numberDiners = Number(this.numberDiners);
     const localDate = new Date(this.selectedDate + 'T' + this.selectedTime);
-    this.booking.reservedAt = new Date(localDate.getTime() - (localDate.getTimezoneOffset() * 60000));//Zonas horarias de los servidores
-    console.log(this.booking.reservedAt);
+    this.booking.reservedAt = new Date(localDate.getTime() - (localDate.getTimezoneOffset() * 60000));
     this.booking.restaurantId = this.restaurant?.id;
     this.booking.userId = this.user?.id;
 
@@ -83,8 +83,9 @@ export class ReservaComponent{
 
     this.bookingService.saveBooking(this.booking).subscribe(
       (savedBooking: Booking) => {
-        this.successMessage = 'Reserva guardada correctamente.';
+        this.successMessage = 'Reserva confirmada';
         this.error = '';
+        this.formSubmitted = true; // Cambia el estado para ocultar el formulario
       },
       (error) => {
         this.error = 'Error al guardar la reserva.';
