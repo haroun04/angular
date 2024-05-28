@@ -30,7 +30,7 @@
 
         <!--FORMULARIO-->     
         <section class="section_form mb-5">
-          <form class="feed-form" (ngSubmit)="createBooking()" #bookingForm="ngForm">
+          <form *ngIf="!formSubmitted" class="feed-form" (ngSubmit)="createBooking()" #bookingForm="ngForm">
             <div class="form-grid">
               <input required placeholder="Name" type="text" disabled [value]="user?.name">
               <input name="phone" required placeholder="Teléfono" pattern="^\d{1,9}$" maxlength="9" ngModel>
@@ -44,11 +44,14 @@
             <p class="error-message" *ngIf="numberDinersInput.invalid && (numberDinersInput.dirty || numberDinersInput.touched)">
               Debe introducir un número entre 1 y 6.
             </p>
-            <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+          </form>
+        
+          <div *ngIf="formSubmitted">
+            <p class="success-message">{{ successMessage }}</p>
             <p class="sign-up-label text-center">
               <a class="sign-up-link" *ngIf="restaurant" [routerLink]="['/restaurant-detail', restaurant.id]">Volver</a>
             </p>
-          </form>
+          </div>
         </section>
         
           

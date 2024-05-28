@@ -10,12 +10,19 @@ export class AppComponent {
   title = 'EatEasy';
 
   constructor(private router: Router) {}
-  
+
 
   isLoginPage(): boolean {
     return this.router.url === '/login';
   }
 
+  isAdminIndex(): boolean {
+    return this.router.url === '/indexAdmin';
+  }
+
+  isAdminReviews(): boolean {
+    return this.router.url === '/reviews';
+  }
   isRegisterPage(): boolean {
     return this.router.url === '/register';
   }

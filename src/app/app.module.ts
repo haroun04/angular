@@ -24,6 +24,7 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { IndexAdminComponent } from './index-admin/index-admin.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HeaderAdminComponent } from './header-admin/header-admin.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     IndexAdminComponent,
     ReservaComponent,
     PageNotFoundComponent,
+    HeaderAdminComponent,
   ],
   imports: [
     BrowserModule,

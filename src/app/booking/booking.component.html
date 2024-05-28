@@ -8,10 +8,11 @@
           <div class="reservation-time"><strong><i class="fas fa-clock"></i> Fecha de reserva: </strong>{{ booking?.reservedAt | date:'dd/MM/yyyy, HH:mm' }}</div>
           <div class="diners-number"><strong><i class="fas fa-users"></i> Número de comensales: </strong>{{ booking?.numberDiners }}</div>
           <div class="restaurant-address"><strong><i class="fas fa-map-marker-alt"></i> Dirección: </strong>{{ booking?.restaurant?.location }}</div>
+
           <button class="button" (click)="deleteBooking(booking.id)">
             <span class="button-content">Cancelar Reserva</span>
           </button>
-          
+
         </div>
         <div class="restaurant-image">
           <img [src]="booking?.restaurant?.url" alt="{{ booking?.restaurant?.name }}">

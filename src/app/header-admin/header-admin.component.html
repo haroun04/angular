@@ -5,8 +5,8 @@
         <img src="assets/img/logo.png" class="logo me-2" alt="Logo de EatEasy">
       </a>
       <ul class="align-items-center nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/restaurants" class="nav-link px-2 text-white">Restaurantes</a></li>
-        <li><a href="/booking" class="nav-link px-2 text-white" *ngIf="isAuthenticated()">Mis Reservas</a></li>
+        <li><a href="/reviews" class="nav-link px-2 text-white">Reviews</a></li>
+        <li><a href="/users" class="nav-link px-2 text-white">Usuarios</a></li>
         <li><a href="/about" class="nav-link px-2 text-white">Sobre Nosotros</a></li>
       </ul>
 
@@ -24,27 +24,13 @@
         </button>
     </form>
 
-<div class="text-end" style="display: contents;">
-  <ng-container *ngIf="!isAuthenticated()">
-    <button [routerLink]="['/login']" class="button">
-      <span class="button-content">Iniciar Sesión</span>
-    </button>
-    <button [routerLink]="['/register']" class="button">
-      <span class="button-content">Registrarse</span>
-    </button>
-  </ng-container>
 
-  <ng-container *ngIf="isAuthenticated()">
+  <ng-container>
     <button class="button" (click)="logout()">
       <span class="button-content">Cerrar Sesion</span>
     </button>
-      <button class="user-button" [routerLink]="['/user']">
-        <img *ngIf="user" [src]="user.profilePicture ? user.profilePicture : 'assets/img/default-profile-picture.png'" alt="Foto de perfil" class="img-fluid rounded-circle user-image">
-        <span class="username" *ngIf="user">{{ user.name }}</span>
-      </button>
     </ng-container>
 </div>
-
     </div>
-  </div>
+
 </header>
