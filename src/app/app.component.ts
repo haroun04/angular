@@ -17,11 +17,8 @@ export class AppComponent {
   }
 
   isAdminIndex(): boolean {
-    return this.router.url === '/indexAdmin';
-  }
-
-  isAdminReviews(): boolean {
-    return this.router.url === '/reviews';
+    const adminroutes = ['/indexAdmin', '/reviewAdmin', '/usersAdmin'];
+    return adminroutes.includes(this.router.url);
   }
   isRegisterPage(): boolean {
     return this.router.url === '/register';

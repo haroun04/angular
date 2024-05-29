@@ -1,0 +1,26 @@
+<div *ngIf="reviews.length > 0">
+  <h2>Reviews de los usuarios</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Comentario</th>
+        <th>Fecha de creacion</th>
+        <th>Nombre</th>
+        <th>Foto de perfil</th>
+        <th>Eliminar comentario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let review of reviews">
+        <td>{{ review.comment }}</td>
+        <td>{{ review.createdAt | date }}</td>
+        <td>{{ review.userName}}</td>
+        <td>
+          <img [src]="review.userProfilePicture" alt="{{ review.userProfilePicture}}" class="img-fluid rounded-circle restaurant-image" style="width: 50px; height: 50px;">
+        </td>
+        <td>
+          <button *ngIf="review.id !== undefined" (click)="deleteReview(review.id)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

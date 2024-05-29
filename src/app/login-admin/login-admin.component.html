@@ -1,5 +1,5 @@
 <div class="container justify-content-center mt-5 form-container">
-    <p class="title">Bienvenido de vuelta</p>
+    <p class="title">Acceso al Panel de Administrador</p>
     <form class="form" (ngSubmit)="loginUser()">
       <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="name">
       <input type="password" class="input" placeholder="Contraseña" name="password" [(ngModel)]="password">
@@ -10,4 +10,6 @@
       </p>
   
 </div>
-  
+<div *ngIf="loginError" class="error-message" style="text-align: center;">
+  Este usuario no es admin
+</div>
