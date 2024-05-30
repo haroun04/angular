@@ -27,6 +27,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { ReviewAdminComponent } from './review-admin/review-admin.component';
 import { UsersAdminComponent } from './users-admin/users-admin.component';
+import { UpdateAdminComponent } from './update-admin/update-admin.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UsersAdminComponent } from './users-admin/users-admin.component';
     HeaderAdminComponent,
     ReviewAdminComponent,
     UsersAdminComponent,
+    UpdateAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Review } from './review';
 
     export class Restaurant {
         id ?: number;
+        uuid ?:string;
         name ?: string;
         location ?: string;
         foodStyle ?: string;

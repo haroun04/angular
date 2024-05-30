@@ -17,6 +17,11 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(this.baseUrl);
   }
 
+  getRestaurantByUUID(uuid: string): Observable<Restaurant> {
+    const url = `${this.baseUrl}/uuid/${uuid}`;
+    return this.http.get<Restaurant>(url);
+  }
+
   getRestaurantById(id: number): Observable<Restaurant> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Restaurant>(url);
@@ -27,8 +32,8 @@ export class RestaurantService {
   }
 
   updateRestaurant(id: number, restaurant: Restaurant): Observable<Restaurant> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.put<Restaurant>(url, restaurant);
+    const url = `${this.baseUrl}/patch/${id}`;
+    return this.http.patch<Restaurant>(url, restaurant);
   }
 
   deleteRestaurant(id: number): Observable<void> {
@@ -36,7 +41,7 @@ export class RestaurantService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/id/${id}`;
     return this.http.delete<void>(url, { headers });
   }
 

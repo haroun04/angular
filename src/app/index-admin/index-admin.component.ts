@@ -3,7 +3,7 @@ import { Restaurant } from '../restaurant';
 import { RestaurantService } from '../restaurant.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { User } from '../user';
+
 @Component({
   selector: 'app-index-admin',
   templateUrl: './index-admin.component.html',
@@ -42,17 +42,23 @@ loadRestaurants(): void {
 }
 
 
-  deleteRestaurant(id: number): void {
-
-        this.restaurantService.deleteRestaurant(id);
-        this.getAllRestaurants();
-
-
+deleteRestaurant(id: number): void {
+  const confirmed = window.confirm('¿Estás seguro de que deseas eliminar este restaurante?');
+  if (confirmed) {
+    this.restaurantService.deleteRestaurant(id).subscribe(
+      () => {
+        this.restaurants = this.restaurants.filter(restaurant => restaurant.id !== id);
+        this.updatePage();
+      },
+      error => {
+        console.error('Error deleting restaurant', error);
+      }
+    );
   }
-
+}
 
   updateRestaurant(id: number): void {
-    this.router.navigate(['/update-restaurant', id]);
+    this.router.navigate(['updateAdmin', id]);
   }
 
 verDetalles(id: number): void {

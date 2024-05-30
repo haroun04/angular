@@ -18,8 +18,14 @@ export class AppComponent {
 
   isAdminIndex(): boolean {
     const adminroutes = ['/indexAdmin', '/reviewAdmin', '/usersAdmin'];
-    return adminroutes.includes(this.router.url);
+    const currentUrl = this.router.url;
+    if (currentUrl.startsWith('/updateAdmin')) {
+      return true;
+    }
+    return adminroutes.includes(currentUrl);
   }
+  
+  
   isRegisterPage(): boolean {
     return this.router.url === '/register';
   }
