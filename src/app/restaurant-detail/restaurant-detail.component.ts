@@ -8,6 +8,9 @@ import { AuthService } from '../auth.service';
 import { BookingService } from '../booking.service';
 import { User } from '../user';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FrService } from '../fr.service';
+import { HttpClient } from '@angular/common/http';
+import { Fr } from '../fr';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -31,6 +34,8 @@ export class RestaurantDetailComponent implements OnInit {
   };
 
   submitted: boolean = false;
+  isFavorite: boolean = false;
+  favorite : Fr= new Fr();
 
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService,
@@ -38,14 +43,18 @@ export class RestaurantDetailComponent implements OnInit {
               private authService: AuthService,
               private sanitizer: DomSanitizer,
               private router: Router,
-              private bookingService: BookingService) {}
+              private bookingService: BookingService,
+            private frService: FrService,
+            private http: HttpClient) {}
 
    ngOnInit(): void {
     this.id = this.route.snapshot.params['id'] ?? undefined;
     if (this.id !== undefined) {
+      this.getUserByToken();
       this.getRestaurantDetails(this.id);
+      this.checkIfFavorite(this.id);
       this.newReview.restaurantId = this.id; 
-       this.getUserByToken();
+       
     }
   }
 
@@ -172,6 +181,58 @@ export class RestaurantDetailComponent implements OnInit {
 
   verDetalles(id: number): void {
     this.router.navigate(['reserva', id]);
+  }
+
+
+  checkIfFavorite(id: number) {
+    this.frService.isFavorite(id).subscribe((response) => {
+      this.isFavorite = response;
+      console.log('Favorito: ', this.isFavorite);
+    });
+  }
+
+  
+
+  deleteFavorite(restaurantId: number | undefined): void {
+    if (restaurantId !== undefined) {
+      this.frService.getFavoriteRestaurantByRestaurantID(restaurantId)
+        .subscribe(response => {
+          console.log(response); 
+          if (response && response.id) {
+            console.log(`Favorite Restaurant ID: ${response.id}`); 
+            this.http.delete(`http://localhost:8080/api/favorite-restaurants/${response.id}`)
+        .subscribe(
+            () => {
+                console.log('Favorito eliminado exitosamente');
+                window.location.reload();
+            },
+            error => {
+                console.error('Error al eliminar favorito:', error);
+            }
+        );
+          }
+        },
+        error => {
+          console.error('Error fetching favorite restaurant:', error);
+        });
+    }
+  }
+
+
+  
+  saveFavorite(userId: number | undefined, restaurantId:number | undefined):void {
+    this.favorite.userId=userId;
+    this.favorite.restaurantId=restaurantId;
+
+    this.frService.saveFavorite(this.favorite).subscribe(
+      (savedFav: Fr) => {
+        console.log('Añadido a favs');
+        window.location.reload();
+      },
+      (error) => {
+        console.log('Error al añadir a favs');
+      }
+    );
   }
   
 

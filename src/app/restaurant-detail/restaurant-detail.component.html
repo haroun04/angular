@@ -22,9 +22,13 @@
     </div>
     
     <div class="col-md-6 text-start align-items-start ml-md-5 columna justify-content-center text-center">
-      <h1>{{ restaurant.name }}</h1><br>
+      <h1>{{ restaurant.name }} <i class="fas"
+        [ngClass]="{ 'favorite': isFavorite, 'not-favorite': !isFavorite }"
+        (click)="isFavorite ? deleteFavorite(restaurant.id) : saveFavorite(user?.id,restaurant.id)">
+     </i>
+      </h1><br>
       <div class="d-flex flex-column">
-        <p class="mb-2"><strong><i class="fas fa-map-marker-alt me-2"></i></strong> {{ restaurant.location }}</p>
+        <p class="mb-2"><strong><i class="fas fa-map-marker-alt me-2"></i></strong> {{ restaurant.location }} </p>
         <p class="mb-2"><strong><i class="fas fa-utensils me-2"></i></strong> {{ restaurant.foodStyle }}</p>
         <p class="mb-2"><strong><i class="far fa-clock me-2"></i></strong> {{ restaurant.timeTable }}</p>
         <p class="mb-2"><strong><i class="fas fa-phone me-2"></i></strong> {{ restaurant.phoneNumber }}</p><br>

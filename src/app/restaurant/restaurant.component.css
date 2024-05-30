@@ -33,13 +33,4 @@
     color: white;
   }
 
-  .heart-icon {
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  .heart-icon.filled {
-    color: red;
-  }
+
