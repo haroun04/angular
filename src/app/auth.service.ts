@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private authTokenKey = 'token';
-  private userDataEndpoint = '/api/user'; 
+  private userDataEndpoint = '/api/user';
 
   constructor(private http: HttpClient) {}
 
@@ -21,13 +21,16 @@ export class AuthService {
     return authToken !== null;
   }
 
+  getToken(): string | null {
+    return localStorage.getItem(this.authTokenKey);
+  }
+
   fetchUserData(): Observable<any> {
     if (!this.isAuthenticated()) {
       throw new Error('User is not authenticated.');
     }
-    const authToken = localStorage.getItem(this.authTokenKey);
+    const authToken = this.getToken();
     const headers = { Authorization: `Bearer ${authToken}` };
     return this.http.get<any>(this.userDataEndpoint, { headers });
   }
-
 }

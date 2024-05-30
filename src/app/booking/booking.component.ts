@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookingService } from '../booking.service';  
+import { BookingService } from '../booking.service';
 import { Booking } from '../booking';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
@@ -38,6 +38,7 @@ export class BookingComponent implements OnInit {
   }
 
   deleteBooking(id: number) {
+    if (confirm('¿Estás seguro de que quieres cancelar la reserva?')) {
     this.http.delete(`http://localhost:8080/api/bookings/${id}`)
         .subscribe(
             () => {
@@ -48,7 +49,8 @@ export class BookingComponent implements OnInit {
                 console.error('Error al eliminar la reserva:', error);
             }
         );
-  }
-
-  
+      } else {
+        console.log('Cancelación de la reserva abortada');
+}
+}
 }

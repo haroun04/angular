@@ -10,12 +10,22 @@ export class AppComponent {
   title = 'EatEasy';
 
   constructor(private router: Router) {}
-  
+
 
   isLoginPage(): boolean {
     return this.router.url === '/login';
   }
 
+  isAdminIndex(): boolean {
+    const adminroutes = ['/indexAdmin', '/reviewAdmin', '/usersAdmin'];
+    const currentUrl = this.router.url;
+    if (currentUrl.startsWith('/updateAdmin')) {
+      return true;
+    }
+    return adminroutes.includes(currentUrl);
+  }
+  
+  
   isRegisterPage(): boolean {
     return this.router.url === '/register';
   }
