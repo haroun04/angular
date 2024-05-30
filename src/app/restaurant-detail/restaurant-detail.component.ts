@@ -236,29 +236,4 @@ export class RestaurantDetailComponent implements OnInit {
   }
   
 
-/*
- toggleFavorite() {
-    this.isFavorite = !this.isFavorite;
-    if (this.isFavorite) {
-      this.restaurantService.addFavorite(this.restaurant.id).subscribe();
-    } else {
-      this.restaurantService.removeFavorite(this.restaurant.id).subscribe();
-    }
-  }
-
-
-  deleteFavorite(restaurantId: number | undefined):void {
-    
-    this.http.delete(`http://localhost:8080/api/favorite-restaurants/${id}`)
-        .subscribe(
-            () => {
-                console.log('Favorito eliminado exitosamente');
-            },
-            error => {
-                console.error('Error al eliminar favorito:', error);
-            }
-        );
-  }
-*/  
-
 }
