@@ -29,4 +29,18 @@ export class FrService {
     const url = `${this.baseUrlFrestaurant}/${id}`;
     return this.http.delete<void>(url);
   }
+
+  isFavorite(restaurantId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrlFrestaurant}/${restaurantId}/isFavorite`);
+  }
+
+  saveFavorite(favorite: Fr): Observable<Fr> {
+    const authToken = localStorage.getItem('authToken'); 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`); 
+    return this.http.post<Fr>(this.baseUrlFrestaurant, favorite, { headers });
+  }
+
+  getFavoriteRestaurantByRestaurantID(restaurantId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrlFrestaurant}/restaurantId/${restaurantId}`);
+  }
 }

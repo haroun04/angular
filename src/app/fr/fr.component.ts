@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class FrComponent implements OnInit {
   favoriteRestaurants: Fr[] = [];
   user: any = { favoriteRestaurants: [] };  
+  id?:number;
 
   constructor(private frService: FrService, private http: HttpClient) { }
 
@@ -25,7 +26,7 @@ export class FrComponent implements OnInit {
       this.frService.getUserByToken(token).subscribe(
         (user: User) => {
           this.user = user;
-          console.log('Booking:', this.user.favoriteRestaurants);
+          console.log('Usuario: ', this.user);
         },
         (error) => {
           console.error('Error al obtener el usuario:', error);
@@ -34,6 +35,19 @@ export class FrComponent implements OnInit {
     } else {
       console.error('No se encontró el token en el localStorage');
     }
+  }
+
+  deleteFavorite(id: number) {
+    this.http.delete(`http://localhost:8080/api/favorite-restaurants/${id}`)
+        .subscribe(
+            () => {
+                console.log('Favorito eliminado exitosamente');
+                this.getUserByToken();
+            },
+            error => {
+                console.error('Error al eliminar favorito:', error);
+            }
+        );
   }
   
 

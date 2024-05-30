@@ -4,21 +4,29 @@
     <li *ngFor="let favorite of user?.favoriteRestaurants" class="reservation-item"><hr>
       <div class="booking-info">
         <div class="booking-details">
-          <div class="restaurant-name">{{ favorite?.restaurant?.name }}</div>
-          <div class="restaurant-address"><strong><i class="fas fa-map-marker-alt"></i> Dirección: </strong>{{ favorite?.restaurant?.location }}</div>
+          <div class="restaurant-name">
+            {{ favorite?.restaurant?.name }}
+            <i class="fas fa-heart favorite-icon" (click)="deleteFavorite(favorite.id)"></i>
+          </div>
+          <div class="restaurant-address">
+            <strong><i class="fas fa-map-marker-alt"></i> Dirección: </strong>{{ favorite?.restaurant?.location }}
+          </div>
           <div class="restaurant-phone">
             <strong><i class="fas fa-phone"></i> Teléfono: </strong>{{ favorite?.restaurant?.phoneNumber }}
           </div>
           <div class="restaurant-food">
             <strong><i class="fas fa-utensils"></i> Comida: </strong>{{ favorite?.restaurant?.foodStyle }}
-          </div></div>
-          <div class="restaurant-image" [routerLink]="['/restaurant-detail/', favorite?.restaurant?.id]">
-            <img [src]="favorite?.restaurant?.url" alt="{{ favorite?.restaurant?.name }}">
-          </div>          
+          </div>
+        </div>
+        <div class="restaurant-image" [routerLink]="['/restaurant-detail/', favorite?.restaurant?.id]">
+          <img [src]="favorite?.restaurant?.url" alt="{{ favorite?.restaurant?.name }}">
+        </div>          
       </div>
     </li>
   </ul>
 </div>
+
+
 
 <ng-template #noUser >
   <p class="reservations-container">No hay reservas disponibles.</p>
