@@ -10,20 +10,23 @@ import { Reguister } from '../register';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  register: Reguister = { name: '', email:'', password: ''};
+  register: Reguister = { name: '', email: '', password: '' };
   emailPattern: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
   passwordLength: number = 5; 
+  errorMessage: string = '';
 
   constructor(private registerService: ReguisterService, private authService: AuthService, private router: Router) { }
 
   signUp(): void {
+    this.errorMessage = ''; 
+
     if (!this.isValidEmail(this.register.email)) {
-      console.error('Error al registrarse: El correo electrónico no es válido.');
+      this.errorMessage = 'El correo electrónico no es válido.';
       return;
     }
 
     if (this.register.password.length < this.passwordLength) {
-      console.error('Error al registrarse: La contraseña debe tener al menos 5 caracteres.');
+      this.errorMessage = 'La contraseña debe tener al menos 5 caracteres.';
       return;
     }
 
@@ -38,11 +41,11 @@ export class RegisterComponent {
           if (this.register.name !== undefined && this.register.password !== undefined) {
             this.router.navigate(['/index']);
           } else {
-            console.error('Error al registrarse: Los campos name y password son requeridos.');
+            this.errorMessage = 'Los campos name y password son requeridos.';
           }
         },
         error => {
-          console.error('Error al registrarse:', error);
+          this.errorMessage = 'Error al registrarse: ' + (error.error.message || error.message);
         }
       );
   }

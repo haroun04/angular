@@ -6,6 +6,7 @@
         <input type="password" class="input" placeholder="Contraseña" name="password" [(ngModel)]="register.password" required [ngClass]="{'error': register.password.length < passwordLength}">
         <button type="submit" class="form-btn">Crear cuenta</button>
     </form>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     <p class="sign-up-label">
         ¿Ya tienes una cuenta? <span class="sign-up-link" [routerLink]="['/login']">Inicia sesión</span>
     </p>
