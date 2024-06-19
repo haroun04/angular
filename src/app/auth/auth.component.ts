@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  userData: any; // Almacena los datos del usuario
+  userData: any;
 
   constructor(private authService: AuthService) {}
 
@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit {
     this.fetchUserData(); 
   }
 
-  fetchUserData(): void { // Cambiado de getUserData a fetchUserData
+  fetchUserData(): void { // Cambia de getUserData a fetchUserData
     this.authService.fetchUserData().subscribe(
       data => {
         this.userData = data;

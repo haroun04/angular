@@ -17,7 +17,7 @@ export class AppComponent {
   }
 
   isAdminIndex(): boolean {
-    const adminroutes = ['/indexAdmin', '/reviewAdmin', '/usersAdmin'];
+    const adminroutes = ['/indexAdmin', '/reviewAdmin', '/usersAdmin', '/createRestAdmin'];
     const currentUrl = this.router.url;
     if (currentUrl.startsWith('/updateAdmin')) {
       return true;

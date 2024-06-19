@@ -1,0 +1,83 @@
+<div class="container custom-section">
+    <div class="right-column">
+      <h2 class="welcome-message" style="text-align: center;">
+        Crear Restaurante: {{ restaurant.name }}
+      </h2>
+      <hr>
+      <div class="user-details">
+        <h3 style="text-align: center;">Información del Restaurante</h3>
+        <form (ngSubmit)="createRestaurant()" #restaurantForm="ngForm">
+          <table class="restaurant-table">
+            <tr>
+              <td class="detail-label">Nombre:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.name" name="name" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Imagen principal:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.url" name="url" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Ubicación:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.location" name="location" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Estilo de Comida:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.foodStyle" name="foodStyle" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Horario:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.timeTable" name="timeTable" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Capacidad:</td>
+              <td class="detail-value">
+                <input type="number" class="form-control" [(ngModel)]="restaurant.capacity" name="capacity" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Número de Teléfono:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.phoneNumber" name="phoneNumber" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Descripción:</td>
+              <td class="detail-value">
+                <textarea class="form-control" [(ngModel)]="restaurant.description" name="description" required></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">Fuente del Iframe del Usuario:</td>
+              <td class="detail-value">
+                <input type="text" class="form-control" [(ngModel)]="restaurant.userIframeSrc" name="userIframeSrc" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="detail-label">ID del Propietario:</td>
+              <td class="detail-value">
+                <input type="number" class="form-control" [(ngModel)]="restaurant.owner_id" name="owner_id" required>
+              </td>
+            </tr>
+          </table>
+          <div class="restaurant-detail text-center">
+            <p *ngIf="updateSuccess" class="text-success">¡Restaurante creado con éxito!</p>
+            <p *ngIf="updateError" class="text-danger">Error al crear el restaurante. Por favor, inténtelo de nuevo.</p>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!restaurantForm.form.valid">Crear Restaurante</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

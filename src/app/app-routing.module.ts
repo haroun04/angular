@@ -18,6 +18,7 @@ import { ReviewAdminComponent } from './review-admin/review-admin.component';
 import { UsersAdminComponent } from './users-admin/users-admin.component';
 import { UpdateAdminComponent } from './update-admin/update-admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CreateRestAdminComponent } from './create-rest-admin/create-rest-admin.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -38,9 +39,11 @@ const routes: Routes = [
   { path: 'updateAdmin/:id', component: UpdateAdminComponent },
   { path: 'reviewAdmin', component: ReviewAdminComponent },
   { path: 'usersAdmin', component: UsersAdminComponent },
+  { path: 'createRestAdmin', component: CreateRestAdminComponent},
   { path: 'reserva/:id', component: ReservaComponent },
   { path: '', redirectTo: '/index', pathMatch: 'full' },// redireccion automatica al index si no se encuentra
   { path: '**', component: PageNotFoundComponent }
+  
      
 ];
 

@@ -28,6 +28,7 @@ import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { ReviewAdminComponent } from './review-admin/review-admin.component';
 import { UsersAdminComponent } from './users-admin/users-admin.component';
 import { UpdateAdminComponent } from './update-admin/update-admin.component';
+import { CreateRestAdminComponent } from './create-rest-admin/create-rest-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { UpdateAdminComponent } from './update-admin/update-admin.component';
     ReviewAdminComponent,
     UsersAdminComponent,
     UpdateAdminComponent,
+    CreateRestAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { UserService } from '../user.service'; // Importa el servicio UserService
+import { UserService } from '../user.service'; 
 import { User } from '../user';
 
 @Component({
@@ -16,12 +16,12 @@ export class HeaderAdminComponent implements OnInit {
 
   constructor(private router: Router,
               private authService: AuthService,
-              private userService: UserService) { // Inyecta el servicio UserService
+              private userService: UserService) {
     this.isLoggedIn = this.isAuthenticated();
   }
 
   ngOnInit(): void {
-    this.getUserByToken(); // Llama al método getUserByToken al inicializar el componente
+    this.getUserByToken();
   }
 
   searchRestaurant(): void {
@@ -41,7 +41,7 @@ export class HeaderAdminComponent implements OnInit {
 
   getUserByToken(): void {
     if (typeof localStorage !== undefined && localStorage.getItem('token') !== null) {
-      const token: string = localStorage.getItem('token') as string; // Convertir explícitamente a string
+      const token: string = localStorage.getItem('token') as string; // Convertir a string
       this.userService.getUserByToken(token).subscribe(
         (user: User) => {
           this.user = user;
